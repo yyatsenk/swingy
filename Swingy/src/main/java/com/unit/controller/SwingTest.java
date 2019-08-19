@@ -4,8 +4,15 @@ import java.util.*;
 import java.io.*;
 import Swingy.src.main.java.com.unit.view.*;
 import Swingy.src.main.java.com.unit.model.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
-    public class SwingTest {  
+    public class SwingTest { 
+	
+	@Pattern(regexp=".+@.+\\..+", message="Wrong email!")
+	private String testValidation;
     public static void main(String[] args) 
     {   
 		if (args.length != 1)
