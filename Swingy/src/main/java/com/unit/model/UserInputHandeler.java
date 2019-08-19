@@ -7,22 +7,24 @@ class Character
 {
     private String name;
     private int age;
-    private int power;
-    private int ammo;
+    private String heroClass;
+    private int experience;
+    private int attack;
+    private int defense;
+    private int hit;
     public Character()
     {
         name = "Noname";
         age = 20;
-        power = 100;
-        ammo = 200;
+        experience = 100;
+        attack = 200;
+        defense = 100;
+        hit = 50;
 
     }
     Character(String name, int age, int power, int ammo)
     {
-        this.name = name;
-        this.age = age;
-        this.power = power;
-        this.ammo = ammo;
+        ;
     }
     public String getCharName()
     {
@@ -32,30 +34,27 @@ class Character
     {
         return age;
     }
-    public int getCharPower()
+    public String getCharClass()
     {
-        return power;
+        return heroClass;
     }
-    public int getCharAmmo()
+    public int getCharExperience()
     {
-        return ammo;
+        return experience;
     }
-    public void setCharName(String name)
+    public int getCharAttack()
     {
-        this.name = name;
+        return attack;
     }
-    public void setCharAge(int age)
+    public int getCharDefense()
     {
-        this.age = age;
+        return defense;
     }
-    public void setCharPower(int power)
+    public int getCharHit()
     {
-        this.power = power;
+        return hit;
     }
-    public void setCharAmmo(int ammo)
-    {
-        this.ammo = ammo;
-    }
+    
 }
 
 public interface UserInputHandeler
