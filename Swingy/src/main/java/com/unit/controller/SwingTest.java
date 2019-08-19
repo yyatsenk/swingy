@@ -44,7 +44,7 @@ import javax.validation.Valid;
 		UserInputFile input;
 		setTestValifation("0");
 		cView.initView();
-		Thread.sleep(4000);
+		Thread.sleep(10000);
 		cView.deinitView();
     }  
 }  

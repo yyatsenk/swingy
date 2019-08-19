@@ -8,24 +8,36 @@ import javax.swing.*;
 public class GuiView implements SwingView
 {
     private JFrame f;
-    private JButton b;
+    private JButton buttCreate;
+    private JButton buttChoose;
+    JLabel lbl;
     public void initView()
     {
         System.out.println("Inside GuiView");
-        f=new JFrame();//creating instance of JFrame  
+        f = new JFrame("Swingy");
+
+
+        lbl = new JLabel("You need the warrior for game!"); 
+        lbl.setBounds(110,5, 350,30);
+
+        buttCreate = new JButton("Create");
+        buttCreate.setBounds(130,100,100, 40); 
+        
+        buttChoose = new JButton("Choose");
+    	buttChoose.setBounds(230,100,100, 40);
               
-    	b=new JButton("Close");//creating instance of JButton  
-    	b.setBounds(130,100,100, 40);//x axis, y axis, width, height  
-              
-    	f.add(b);//adding button in JFrame  
-        b.addActionListener(new ActionListener(){  
+        f.add(buttCreate);//adding button in JFrame 
+        f.add(buttChoose);
+        f.add(lbl);
+        buttCreate.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent e){  
                     f.setVisible(false); 
                     }  
                 });  
-    	f.setSize(1000,1000);
+    	f.setSize(500,300);
     	f.setLayout(null);  
-    	f.setVisible(true);
+        f.setVisible(true);
+        f.show();
     }
     public void deinitView()
     {
