@@ -1,40 +1,50 @@
 package Swingy.src.main.java.com.unit.controller;
-import javax.swing.*;
+
 import java.util.*;
 import java.io.*;
+import java.util.Scanner; 
 import Swingy.src.main.java.com.unit.view.*;
 import Swingy.src.main.java.com.unit.model.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.validation.Valid;
+
 
     public class SwingTest { 
 	
 	@Pattern(regexp=".+@.+\\..+", message="Wrong email!")
-	private String testValidation;
-    public static void main(String[] args) 
+	private static String testValidation;
+	public static void setTestValifation(String test)
+	{
+		testValidation = test;
+	}
+    public static void main(String[] args) throws InterruptedException
     {   
+		Scanner in = new Scanner(System.in);
+		SwingView cView;
 		if (args.length != 1)
         {
             System.out.println("Usage: java swingy [console, gui]");
             System.exit(0);
         }
 
-		if (args[0] == "console")
+		System.out.println(args[0]);
+		if ("console".equals(args[0]))
+			cView = new ConsoleView();
+		else if ("gui".equals(args[0]))
+			cView = new GuiView();
+		else
 		{
-			ConsoleView cView = new ConsoleView();
+			System.out.println("return");
+			return ;
 		}
+			System.out.println("After SwingView");
 		UserInputFile input;
-    	JFrame f=new JFrame();//creating instance of JFrame  
-              
-    	JButton b=new JButton("click");//creating instance of JButton  
-    	b.setBounds(130,100,100, 40);//x axis, y axis, width, height  
-              
-    	f.add(b);//adding button in JFrame  
-              
-    	f.setSize(400,500);//400 width and 500 height  
-    	f.setLayout(null);//using no layout managers  
-    	f.setVisible(true);//making the frame visible  
+		setTestValifation("0");
+		cView.initView();
+		Thread.sleep(4000);
+		cView.deinitView();
     }  
 }  
