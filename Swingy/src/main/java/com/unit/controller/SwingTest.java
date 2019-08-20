@@ -41,7 +41,7 @@ import javax.validation.Valid;
 			return ;
 		}
 			System.out.println("After SwingView");
-		UserInputFile input;
+		UserInputFile input = new UserInputFile();
 		setTestValifation("0");
 		cView.initView();
 		Thread.sleep(10000);
