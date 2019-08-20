@@ -24,6 +24,7 @@ import javax.validation.Valid;
     {   
 		Scanner in = new Scanner(System.in);
 		SwingView cView;
+		Hero character = new Hero.HeroBuilder().setName("Noname").setHeroClass("Golden").build();
 		if (args.length != 1)
         {
             System.out.println("Usage: java swingy [console, gui]");
