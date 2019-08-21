@@ -45,7 +45,7 @@ public class UserInputFile implements UserInputHandeler
     }
     public String getFilename()
     {
-        return filename;
+        return new String("Hello");
     }
     public int readFile()
     {

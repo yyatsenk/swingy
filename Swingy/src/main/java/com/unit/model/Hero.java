@@ -1,14 +1,22 @@
 package Swingy.src.main.java.com.unit.model;
 import java.util.*;
 import java.io.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.validation.Valid;
 
 public class Hero
 {
     private String name;
     private String heroClass;
     private int experience;
+    @NotNull
     private int attack;
+    @NotNull
     private int defense;
+    @NotNull
     private int hit;
     // public Character()
     // {
