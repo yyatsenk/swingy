@@ -4,6 +4,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - SwingTest",
             "request": "launch",
+            "mainClass": "com.unit.controller.SwingTest",
+            "projectName": "Swingy"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SwingTest",
+            "request": "launch",
             "mainClass": "unit.controller.SwingTest",
             "projectName": "swingy_c60bb2a3"
         }

@@ -7,8 +7,10 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.validation.Valid;
 
+
 public class Hero
 {
+    @NotNull
     private String name;
     private String heroClass;
     private int experience;

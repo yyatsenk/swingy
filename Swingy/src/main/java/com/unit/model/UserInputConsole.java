@@ -14,24 +14,24 @@ public class UserInputConsole implements UserInputHandeler
      private Hero character;
      public int readFile()
     {
-        character = new Hero.HeroBuilder().setAttack(0).setDefense(0).setName("Greek").build();
+        character = new Hero.HeroBuilder().setAttack(0).setDefense(0).setName(null).build();
         System.out.println("Reading from console\n");
-        //ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        //validator = factory.getValidator();
-        // ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        validator = factory.getValidator();
+         //ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
          
         // //It validates bean instances
-        // validator = factory.getValidator();
-        // Set<ConstraintViolation<Hero>> constraintViolations = validator.validate(character);
+         validator = factory.getValidator();
+         Set<ConstraintViolation<Hero>> constraintViolations = validator.validate(character);
  
         //Show errors
-    //     if (constraintViolations.size() > 0) {
-    //         for (ConstraintViolation<Hero> violation : constraintViolations) {
-    //             System.out.println(violation.getMessage());
-    //         }
-    //     } else {
-    //         System.out.println("Valid Object");
-    //     }
+        if (constraintViolations.size() > 0) {
+            for (ConstraintViolation<Hero> violation : constraintViolations) {
+                System.out.println(violation.getMessage());
+            }
+        } else {
+            System.out.println("Valid Object");
+        }
          return (0);
      }
     public String getFilename()
