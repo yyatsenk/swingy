@@ -11,6 +11,7 @@ import Swingy.src.main.java.com.unit.model.*;
     public static void main(String[] args) throws InterruptedException
     {   
 		Scanner in = new Scanner(System.in);
+		//UserInputFile input = new UserInputFile();
 		SwingView cView;
 		if (args.length != 1)
         {
@@ -29,8 +30,10 @@ import Swingy.src.main.java.com.unit.model.*;
 			return ;
 		}
 			System.out.println("After SwingView");
-		UserInputHandeler input = new UserInputConsole();
+		UserInputHandeler input = new UserInputFile();
+		UserInputHandeler input2 = new UserInputConsole();
 		input.readFile();
+		input2.readFile();
 		cView.initView();
 		Thread.sleep(10000);
 		cView.deinitView();
