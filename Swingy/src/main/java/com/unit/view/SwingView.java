@@ -7,6 +7,7 @@ import java.io.*;
 public interface SwingView{
 
     public abstract void initView();
+    public abstract void printMap(int width, int height);
     public abstract void deinitView();
 
 };

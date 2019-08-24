@@ -39,6 +39,10 @@ public class GuiView implements SwingView
         f.setVisible(true);
         f.show();
     }
+    public void printMap(int width, int height)
+    {
+        
+    }
     public void deinitView()
     {
         if (f.isVisible())

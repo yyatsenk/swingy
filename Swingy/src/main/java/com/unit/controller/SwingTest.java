@@ -35,6 +35,7 @@ import Swingy.src.main.java.com.unit.model.*;
 		input.readFile();
 		input2.readFile();
 		cView.initView();
+		cView.printMap(30,15);
 		Thread.sleep(10000);
 		cView.deinitView();
     }  
