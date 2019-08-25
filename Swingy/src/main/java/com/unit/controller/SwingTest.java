@@ -11,7 +11,6 @@ import Swingy.src.main.java.com.unit.model.*;
     public static void main(String[] args) throws InterruptedException
     {   
 		Scanner in = new Scanner(System.in);
-		//UserInputFile input = new UserInputFile();
 		SwingView cView;
 		if (args.length != 1)
         {
@@ -29,14 +28,19 @@ import Swingy.src.main.java.com.unit.model.*;
 			System.out.println("return");
 			return ;
 		}
-			System.out.println("After SwingView");
-		UserInputHandeler input = new UserInputFile();
-		UserInputHandeler input2 = new UserInputConsole();
-		input.readFile();
-		input2.readFile();
+		Hero character = new Hero.HeroBuilder().setAttack(10).setDefense(50).setName("Kevin").setLevel(1).setHeroClass("Goblin").build();
+		UserInputHandeler input = new UserInputMySQL();
+		if (input.establishConnection() == 0)
+		{
+			System.out.println("establishConnection failed\n");
+			return ;
+		}
+		input.addChar(character);
+		input.getResQuery();
 		cView.initView();
 		cView.printMap(30,15);
 		Thread.sleep(10000);
 		cView.deinitView();
+		input.destroyConnection();
     }  
 }  

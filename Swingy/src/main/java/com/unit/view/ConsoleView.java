@@ -10,6 +10,12 @@ public class ConsoleView implements SwingView
     {
         System.out.println("To create warrior enter: 1\nTo choose warrior enter: 2\n");
     }
+
+    // public  void printCharTable()
+    // {
+
+    // }
+
     public void printMap(int width, int height)
     {
         int i = -1;

@@ -13,6 +13,7 @@ public class Hero
     @NotNull
     private String name;
     private String heroClass;
+    private int level;
     private int experience;
     @NotNull
     private int attack;
@@ -41,6 +42,10 @@ public class Hero
     {
         return heroClass;
     }
+    public int getCharLevel()
+    {
+        return level;
+    }
     public int getCharExperience()
     {
         return experience;
@@ -59,7 +64,8 @@ public class Hero
     }
     private Hero(HeroBuilder builder) {
 		this.name = builder.name;
-		this.heroClass = builder.heroClass;
+        this.heroClass = builder.heroClass;
+        this.level = builder.level;
         this.experience = builder.experience;
         this.attack = builder.attack;
 		this.defense = builder.defense;
@@ -68,6 +74,7 @@ public class Hero
     public static class HeroBuilder{
         private String name;
         private String heroClass;
+        private int level;
         private int experience;
         private int attack;
         private int defense;
@@ -81,6 +88,10 @@ public class Hero
         }
         public HeroBuilder setHeroClass(String heroClass) {
 			this.heroClass = heroClass;
+			return this;
+        }
+        public HeroBuilder setLevel(int level) {
+			this.level = level;
 			return this;
         }
         public HeroBuilder setExperience(int experience) {

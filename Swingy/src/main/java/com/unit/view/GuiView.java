@@ -13,7 +13,6 @@ public class GuiView implements SwingView
     JLabel lbl;
     public void initView()
     {
-        System.out.println("Inside GuiView");
         f = new JFrame("Swingy");
 
 
@@ -41,7 +40,7 @@ public class GuiView implements SwingView
     }
     public void printMap(int width, int height)
     {
-        
+
     }
     public void deinitView()
     {
