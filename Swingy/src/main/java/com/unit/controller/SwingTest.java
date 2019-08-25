@@ -9,9 +9,12 @@ import Swingy.src.main.java.com.unit.model.*;
     public class SwingTest { 
 	
     public static void main(String[] args) throws InterruptedException
-    {   
+    {
+		SwingView view;
+		UserInputHandeler input = new UserInputMySQL();
 		Scanner in = new Scanner(System.in);
-		SwingView cView;
+		Hero character = new Hero.HeroBuilder().setAttack(10).setDefense(50).setName(null).setLevel(1).setHeroClass("Goblin").build();
+		
 		if (args.length != 1)
         {
             System.out.println("Usage: java swingy [console, gui]");
@@ -20,27 +23,27 @@ import Swingy.src.main.java.com.unit.model.*;
 
 		System.out.println(args[0]);
 		if ("console".equals(args[0]))
-			cView = new ConsoleView();
+			view = new ConsoleView();
 		else if ("gui".equals(args[0]))
-			cView = new GuiView();
+			view = new GuiView();
 		else
 		{
 			System.out.println("return");
 			return ;
 		}
-		Hero character = new Hero.HeroBuilder().setAttack(10).setDefense(50).setName("Kevin").setLevel(1).setHeroClass("Goblin").build();
-		UserInputHandeler input = new UserInputMySQL();
 		if (input.establishConnection() == 0)
 		{
 			System.out.println("establishConnection failed\n");
 			return ;
 		}
-		input.addChar(character);
+		// input char stat
+		if (input.validate(character) == 1)
+			input.addChar(character);
 		input.getResQuery();
-		cView.initView();
-		cView.printMap(30,15);
+		view.initView();
+		view.printMap(30,15);
 		Thread.sleep(10000);
-		cView.deinitView();
+		view.deinitView();
 		input.destroyConnection();
     }  
 }  

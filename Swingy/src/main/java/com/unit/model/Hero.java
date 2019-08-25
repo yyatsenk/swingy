@@ -21,15 +21,6 @@ public class Hero
     private int defense;
     @NotNull
     private int hit;
-    // public Character()
-    // {
-    //     name = "Noname";
-    //     experience = 100;
-    //     attack = 200;
-    //     defense = 100;
-    //     hit = 50;
-
-    // }
     Hero(String name, int age, int power, int ammo)
     {
         ;

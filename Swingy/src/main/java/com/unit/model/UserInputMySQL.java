@@ -17,7 +17,7 @@ public class UserInputMySQL implements UserInputHandeler
         try
         {
             Class.forName("com.mysql.jdbc.Driver");  
-            connection=DriverManager.getConnection( "jdbc:mysql://localhost:3306/Characters?useSSL=false","root","root"); 
+            connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/Characters?useSSL=false","root","root"); 
             statement=connection.createStatement();
         }
         catch(Exception e)
@@ -28,11 +28,16 @@ public class UserInputMySQL implements UserInputHandeler
         System.out.println("Database connection established.\n");
         return (1);
     }
+
+    public int     validate(Hero hero)
+    {
+        return val.validateChar(hero);
+    }
+
     public void    addChar(Hero hero)
     {
         try
         {
-
             query = " insert into char_table (char_id, name, char_class, level, experience, attack, defense, hit, Weapon, Armor, Helm)"
             + " SELECT * FROM (SELECT ? as col1, ? as col2, ? as col3, ? as col4, ? as col5, ? as col6, ? as col7, ? as col8, ? as col9, ? as col10, ? as col11) AS tmp" +
             " WHERE NOT EXISTS (SELECT name FROM char_table WHERE name = ?) LIMIT 1";
