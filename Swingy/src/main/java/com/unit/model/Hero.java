@@ -7,7 +7,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.validation.Valid;
 
-
+// TODO : set proper validation attributes
 public class Hero
 {
     @NotNull
