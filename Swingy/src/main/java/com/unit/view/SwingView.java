@@ -4,11 +4,14 @@ import java.util.*;
 import java.io.*;
 import Swingy.src.main.java.com.unit.model.*;
 
-public interface SwingView
+public abstract class SwingView
 {
     public UserInputHandeler input = new UserInputMySQL();
 
+    protected abstract void printDatabase();
+
     public abstract void initView();
+    public abstract Hero getUserInput();
     public abstract void printMap(int width, int height);
     public abstract void deinitView();
 

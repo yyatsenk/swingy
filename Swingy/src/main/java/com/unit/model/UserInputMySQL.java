@@ -6,7 +6,6 @@ import java.sql.*;
 
 public class UserInputMySQL implements UserInputHandeler
 {
-
     private Connection  connection;
     private Statement   statement;
     private String      query;
@@ -63,23 +62,46 @@ public class UserInputMySQL implements UserInputHandeler
             System.out.println(e);
         }
     }
-    public Object  getResQuery()
+    public void  getResQuery(String query)
     {
         try
         {
             res = statement.executeQuery("select * from char_table");
             System.out.println("Name\tClass\tLevel\tExperience\tAttack\tDefense\tHit\tWeapon\tArmor\tHelm");
-            while(res.next())  
+            while(res.next())
+            {
                 System.out.println(res.getString(2)+"\t" + res.getString(3)+"\t" + res.getString(4)
                 + "\t"+ res.getString(5) + "\t\t"+res.getString(6) + "\t"+res.getString(7) + "\t"
-                + res.getString(8) + "\t"+res.getString(9)+"\t"+res.getString(10) +"\t" + res.getString(11));  
+                + res.getString(8) + "\t"+res.getString(9)+"\t"+res.getString(10) +"\t" + res.getString(11)); 
+            }
 
         }
         catch(Exception e)
         {
             System.out.println(e);
         }
-        return res;
+    }
+
+    //get final hero 
+    public Hero setFinalHero(String name)
+    {
+        try
+        {
+            res = statement.executeQuery("select name from char_table where name=\'"+ name +"\'");
+            if (res == null)
+                return null;
+        // while(res.next())
+        // {
+        //     System.out.println(res.getString(2)+"\t" + res.getString(3)+"\t" + res.getString(4)
+        //     + "\t"+ res.getString(5) + "\t\t"+res.getString(6) + "\t"+res.getString(7) + "\t"
+        //     + res.getString(8) + "\t"+res.getString(9)+"\t"+res.getString(10) +"\t" + res.getString(11)); 
+        // }
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return null;
     }
     public void    destroyConnection()
     {

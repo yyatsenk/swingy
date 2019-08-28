@@ -5,7 +5,7 @@ import java.io.*;
 import javax.swing.*;
 import Swingy.src.main.java.com.unit.model.*;
 
-public class GuiView implements SwingView
+public class GuiView extends SwingView
 {
     private JFrame f;
     private JButton buttCreate;
@@ -38,7 +38,19 @@ public class GuiView implements SwingView
         f.add(buttChoose);
         f.add(lbl);
 
+    	f.setSize(500,400);
+    	f.setLayout(null);  
+        f.setVisible(true);
+        f.show();
+    }
+    public void printMap(int width, int height)
+    {
 
+    }
+    protected void printDatabase()
+    {}
+    public Hero  getUserInput()
+    {
         Validate = new JButton("Validate");
         Validate.setBounds(190,250,100, 45);
         name = new JTextField("Enter name");
@@ -81,7 +93,7 @@ public class GuiView implements SwingView
                     .setDefense(Integer.parseInt(defence.getText())).setHit(Integer.parseInt(hit.getText())).build();
                     if (input.validate(hero) == 1)
                     {
-                        input.addChar(hero);
+                        //input.addChar(hero);
                         // game starts
                     }
                      System.out.println(name.getText());
@@ -89,14 +101,7 @@ public class GuiView implements SwingView
                     // System.out.println(name.getText());
                             }  
                         });
-    	f.setSize(500,400);
-    	f.setLayout(null);  
-        f.setVisible(true);
-        f.show();
-    }
-    public void printMap(int width, int height)
-    {
-
+                        return null;
     }
     public void deinitView()
     {

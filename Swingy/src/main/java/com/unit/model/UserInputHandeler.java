@@ -14,6 +14,7 @@ public interface UserInputHandeler
     public abstract int     establishConnection();
     public int              validate(Hero hero);
     public abstract void    addChar(Hero hero);
-    public abstract Object  getResQuery();
+    public abstract void    getResQuery(String query);
+    public abstract Hero    setFinalHero(String name);
     public abstract void    destroyConnection();
 }

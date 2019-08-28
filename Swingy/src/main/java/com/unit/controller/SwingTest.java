@@ -12,7 +12,6 @@ import Swingy.src.main.java.com.unit.model.*;
     {
 		SwingView view;
 		//viewUserInputHandeler input = new UserInputMySQL();
-		Scanner in = new Scanner(System.in);
 		Hero character = new Hero.HeroBuilder().setAttack(10).setDefense(50).setName(null).setLevel(1).setHeroClass("Goblin").build();
 		
 		if (args.length != 1)
@@ -37,11 +36,11 @@ import Swingy.src.main.java.com.unit.model.*;
 			return ;
 		}
 		// input char stat
-		if (view.input.validate(character) == 1)
-			view.input.addChar(character);
-		view.input.getResQuery();
+		// if (view.input.validate(character) == 1)
+		// 	view.input.addChar(character);
 		view.initView();
-		view.printMap(30,15);
+		view.getUserInput();
+		//view.printMap(30,15);
 		Thread.sleep(50000);
 		view.deinitView();
 		view.input.destroyConnection();

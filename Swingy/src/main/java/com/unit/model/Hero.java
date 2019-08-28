@@ -21,6 +21,10 @@ public class Hero
     private int defense;
     @NotNull
     private int hit;
+    Hero()
+    {
+        
+    }
     Hero(String name, int age, int power, int ammo)
     {
         ;
