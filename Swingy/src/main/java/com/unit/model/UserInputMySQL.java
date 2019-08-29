@@ -62,24 +62,32 @@ public class UserInputMySQL implements UserInputHandeler
             System.out.println(e);
         }
     }
-    public void  getResQuery(String query)
+    public String[][]  getResQuery()
     {
+        //String[][] data = {};
         try
         {
+            int i = 0;
+            int j = -1;
             res = statement.executeQuery("select * from char_table");
-            System.out.println("Name\tClass\tLevel\tExperience\tAttack\tDefense\tHit\tWeapon\tArmor\tHelm");
-            while(res.next())
+            res.last();
+            int size = res.getRow();
+            res.first();
+            String[][] data = new String[size][10];
+            do
             {
-                System.out.println(res.getString(2)+"\t" + res.getString(3)+"\t" + res.getString(4)
-                + "\t"+ res.getString(5) + "\t\t"+res.getString(6) + "\t"+res.getString(7) + "\t"
-                + res.getString(8) + "\t"+res.getString(9)+"\t"+res.getString(10) +"\t" + res.getString(11)); 
-            }
-
+                while (++j < 9)
+                    data[i][j] = res.getString(j+2);
+                i++;
+                j = -1;
+            } while(res.next());
+            return data;
         }
         catch(Exception e)
         {
             System.out.println(e);
         }
+        return null;
     }
 
     //get final hero 
@@ -87,15 +95,15 @@ public class UserInputMySQL implements UserInputHandeler
     {
         try
         {
-            res = statement.executeQuery("select name from char_table where name=\'"+ name +"\'");
-            if (res == null)
+            res = statement.executeQuery("select * from char_table where name=\'"+ name +"\'");
+            if (!res.next())
                 return null;
-        // while(res.next())
-        // {
-        //     System.out.println(res.getString(2)+"\t" + res.getString(3)+"\t" + res.getString(4)
-        //     + "\t"+ res.getString(5) + "\t\t"+res.getString(6) + "\t"+res.getString(7) + "\t"
-        //     + res.getString(8) + "\t"+res.getString(9)+"\t"+res.getString(10) +"\t" + res.getString(11)); 
-        // }
+            
+            Hero hero = new Hero.HeroBuilder().setName(res.getString(2)).setHeroClass(res.getString(3))
+            .setLevel(Integer.parseInt(res.getString(4))).setExperience(Integer.parseInt(res.getString(5)))
+            .setAttack(Integer.parseInt(res.getString(6))).setDefense(Integer.parseInt(res.getString(7)))
+            .setHit(Integer.parseInt(res.getString(8))).build();
+            return hero;
         }
         catch(Exception e)
         {

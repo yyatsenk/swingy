@@ -113,7 +113,20 @@ public class ConsoleView extends SwingView
     }
     protected void printDatabase()
     {
-        input.getResQuery("select * from char_table");
+        String[][] data = input.getResQuery();
+        int i = -1;
+        int j = -1;
+        System.out.println("\tName\tClass\tLevel\tExperience\tAttack\tDefense\tHit\tWeapon\tArmor\tHelm");
+        while (++i < data.length)
+        {
+            while (++j < data[i].length)
+            {
+                System.out.print("\t" + data[i][j] + " ");
+            }
+            System.out.println("");
+            j = -1;
+        }
+
 
     }
     public void deinitView()

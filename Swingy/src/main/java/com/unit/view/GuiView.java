@@ -7,6 +7,7 @@ import Swingy.src.main.java.com.unit.model.*;
 
 public class GuiView extends SwingView
 {
+    Hero hero;
     private JFrame f;
     private JButton buttCreate;
     private JButton buttChoose;
@@ -18,7 +19,20 @@ public class GuiView extends SwingView
     private JTextField defence;
     private JTextField attack;
     private JTextField hit;
+    String[] columnNames = {"Name",
+                        "Class",
+                        "Level",
+                        "Experience",
+                        "Defence",
+                        "Attack",
+                        "Hit"};
+    JTable table;
     JLabel lbl;
+    private void setHero(Hero h)
+    {
+        this.hero = h;
+    }
+
     public void initView()
     {
         f = new JFrame("Swingy");
@@ -48,7 +62,8 @@ public class GuiView extends SwingView
 
     }
     protected void printDatabase()
-    {}
+    {
+    }
     public Hero  getUserInput()
     {
         Validate = new JButton("Validate");
@@ -96,12 +111,37 @@ public class GuiView extends SwingView
                         //input.addChar(hero);
                         // game starts
                     }
-                     System.out.println(name.getText());
-                    // System.out.println(name.getText());
-                    // System.out.println(name.getText());
-                            }  
-                        });
-                        return null;
+                    setHero(hero);
+                }
+            });
+            buttChoose.addActionListener(new ActionListener(){  
+                public void actionPerformed(ActionEvent e){  
+                    System.out.println("Inside buttChoose.addActionListener\n");
+                        f.setVisible(false);
+                        String[][] data = input.getResQuery();
+                  
+                        // Initializing the JTable 
+                        JTable j = new JTable(data, columnNames); 
+                        j.setBounds(0, 200, 500, 200); 
+                  
+                        // adding it to JScrollPane 
+                        JScrollPane sp = new JScrollPane(j); 
+                        sp.setBounds(0, 200, 500, 200); 
+                        f.add(sp);
+                        f.setVisible(true);
+                        f.show();
+                        }  
+                    });
+            try
+            {
+            while (this.hero == null)
+                Thread.sleep(100);
+            }
+            catch(Exception e)
+            {
+                System.out.println(e);
+            }
+            return this.hero;
     }
     public void deinitView()
     {

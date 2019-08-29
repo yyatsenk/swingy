@@ -7,7 +7,7 @@ import Swingy.src.main.java.com.unit.view.*;
 import Swingy.src.main.java.com.unit.model.*;
 
     public class SwingTest { 
-	
+	static Hero player;
     public static void main(String[] args) throws InterruptedException
     {
 		SwingView view;
@@ -39,9 +39,10 @@ import Swingy.src.main.java.com.unit.model.*;
 		// if (view.input.validate(character) == 1)
 		// 	view.input.addChar(character);
 		view.initView();
-		view.getUserInput();
+		player = view.getUserInput();
+		System.out.println("Player name = " + player.getCharName());
 		//view.printMap(30,15);
-		Thread.sleep(50000);
+		Thread.sleep(20000);
 		view.deinitView();
 		view.input.destroyConnection();
     }  
