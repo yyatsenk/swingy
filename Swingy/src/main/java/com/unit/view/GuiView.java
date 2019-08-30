@@ -32,7 +32,6 @@ public class GuiView extends SwingView
     {
         this.hero = h;
     }
-
     public void initView()
     {
         f = new JFrame("Swingy");
@@ -121,7 +120,7 @@ public class GuiView extends SwingView
                         String[][] data = input.getResQuery();
                   
                         // Initializing the JTable 
-                        JTable j = new JTable(data, columnNames); 
+                        final JTable j = new JTable(data, columnNames); 
                         j.setBounds(0, 200, 500, 200); 
                   
                         // adding it to JScrollPane 
@@ -130,7 +129,15 @@ public class GuiView extends SwingView
                         f.add(sp);
                         f.setVisible(true);
                         f.show();
-                        }  
+                        j.addMouseListener(new java.awt.event.MouseAdapter() {
+
+                            public void mouseClicked(java.awt.event.MouseEvent e)
+                            {
+                                int row = j.rowAtPoint(e.getPoint());
+                                int col = j.columnAtPoint(e.getPoint());
+                                setHero(input.setFinalHero(j.getValueAt(row,col).toString()));
+                            }
+                        });}  
                     });
             try
             {
