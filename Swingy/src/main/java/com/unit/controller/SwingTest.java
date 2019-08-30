@@ -40,6 +40,8 @@ import Swingy.src.main.java.com.unit.model.*;
 		// 	view.input.addChar(character);
 		view.initView();
 		player = view.getUserInput();
+		if (player != null)
+			view.startGame(500, 500);
 		System.out.println("Player name = " + player.getCharName());
 		//view.printMap(30,15);
 		Thread.sleep(20000);

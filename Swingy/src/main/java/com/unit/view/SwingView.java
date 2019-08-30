@@ -12,6 +12,7 @@ public abstract class SwingView
 
     public abstract void initView();
     public abstract Hero getUserInput();
+    public abstract void startGame(int width, int height);
     public abstract void printMap(int width, int height);
     public abstract void deinitView();
 

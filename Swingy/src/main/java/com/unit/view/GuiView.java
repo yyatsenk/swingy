@@ -1,5 +1,6 @@
 package Swingy.src.main.java.com.unit.view;
 import java.awt.event.*;
+import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
@@ -9,6 +10,7 @@ public class GuiView extends SwingView
 {
     Hero hero;
     private JFrame f;
+    private JFrame gameArea;
     private JButton buttCreate;
     private JButton buttChoose;
     private JButton Validate;
@@ -55,6 +57,7 @@ public class GuiView extends SwingView
     	f.setLayout(null);  
         f.setVisible(true);
         f.show();
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     public void printMap(int width, int height)
     {
@@ -152,9 +155,22 @@ public class GuiView extends SwingView
     }
     public void deinitView()
     {
-        if (f.isVisible())
-            f.setVisible(false);
         f.dispose();
         System.out.println("Here we encounter the end\n");
+    }
+    public void startGame(int width, int height)
+    {
+        if (f.isVisible())
+            f.setVisible(false);
+        gameArea = new JFrame("Swingy");
+        gameArea.setSize(width, height);
+        JPanel panel=new JPanel();  
+        panel.setBounds(40,80,200,200);    
+        panel.setBackground(Color.gray); 
+        gameArea.add(panel); 
+        gameArea.setLayout(null);  
+        gameArea.setVisible(true);
+        gameArea.show();
+        gameArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
