@@ -35,15 +35,11 @@ import Swingy.src.main.java.com.unit.model.*;
 			System.out.println("establishConnection failed\n");
 			return ;
 		}
-		// input char stat
-		// if (view.input.validate(character) == 1)
-		// 	view.input.addChar(character);
 		view.initView();
 		player = view.getUserInput();
 		if (player != null)
 			view.startGame(500, 500);
 		System.out.println("Player name = " + player.getCharName());
-		//view.printMap(30,15);
 		Thread.sleep(20000);
 		view.deinitView();
 		view.input.destroyConnection();

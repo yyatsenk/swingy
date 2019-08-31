@@ -17,14 +17,14 @@ public class ConsoleView extends SwingView
     private int attack;
     private int defense;
     private int hit;
+    public ConsoleView()
+    {
+        logger = LoggerConsole.getLogger();
+    }
     public void initView()
     {
     }
 
-    // public  void printCharTable()
-    // {
-
-    // }
 
     public void printMap(int width, int height)
     {

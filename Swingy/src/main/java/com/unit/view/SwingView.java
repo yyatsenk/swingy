@@ -7,6 +7,7 @@ import Swingy.src.main.java.com.unit.model.*;
 public abstract class SwingView
 {
     public UserInputHandeler input = new UserInputMySQL();
+    public Logger logger;
 
     protected abstract void printDatabase();
 
