@@ -155,17 +155,20 @@ public class GuiView extends SwingView
         f.dispose();
         System.out.println("Here we encounter the end\n");
     }
-    public void startGame(int width, int height)
+    public void startGame(int width, int height, Hero hero)
     {
         if (f.isVisible())
             f.setVisible(false);
         gameArea = new JFrame("Swingy");
-        gameArea.setSize(width, height);
-        JPanel panel = new JPanel();  
+        JPanel panel = new JPanel();
+        GuiStatusBar statusBar = GuiStatusBar.getGuiStatusBar(hero);
+        gameArea.setSize(width, height);  
         panel.setBounds(40,80,200,200);    
         panel.setBackground(Color.gray); 
         gameArea.add(panel);  
         gameArea.add(((LoggerGui)logger).getTextArea());
+        gameArea.add(statusBar.getStatusBarTable());
+        gameArea.add(statusBar.getLevelBar());
         gameArea.setLayout(null);  
         gameArea.setVisible(true);
         gameArea.show();

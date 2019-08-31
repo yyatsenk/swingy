@@ -133,7 +133,7 @@ public class ConsoleView extends SwingView
     {
         System.out.println("Here we encounter the end\n");
     }
-    public void startGame(int width, int height)
+    public void startGame(int width, int height, Hero hero)
     {
 
     }

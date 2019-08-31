@@ -38,7 +38,7 @@ import Swingy.src.main.java.com.unit.model.*;
 		view.initView();
 		player = view.getUserInput();
 		if (player != null)
-			view.startGame(500, 500);
+			view.startGame(500, 500, player);
 		System.out.println("Player name = " + player.getCharName());
 		Thread.sleep(20000);
 		view.deinitView();
