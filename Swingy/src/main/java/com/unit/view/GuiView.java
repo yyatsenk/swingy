@@ -4,6 +4,10 @@ import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import Swingy.src.main.java.com.unit.model.*;
 
 public class GuiView extends SwingView
@@ -161,10 +165,22 @@ public class GuiView extends SwingView
             f.setVisible(false);
         gameArea = new JFrame("Swingy");
         JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(10,10));
+        
+        BufferedImage img = null;
+        BufferedImage img2 = null;
+        try {
+            img = ImageIO.read(new File("/home/yyatsenk/Downloads/1200px-Pac_Man.svg.png"));
+            img2 = ImageIO.read(new File("/home/yyatsenk/Downloads/solid-green-background.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Image newImage = img.getScaledInstance(width / 10, height / 10, Image.SCALE_DEFAULT);
+        Image newImage2 = img2.getScaledInstance(width / 10, height / 10, Image.SCALE_DEFAULT);
         GuiStatusBar statusBar = GuiStatusBar.getGuiStatusBar(hero);
-        gameArea.setSize(width, height);  
-        panel.setBounds(40,80,200,200);    
-        panel.setBackground(Color.gray); 
+        gameArea.setSize(width, height);
+        panel.setBounds(40,80,200,200);
+        panel.setBackground(Color.gray);
         gameArea.add(panel);  
         gameArea.add(((LoggerGui)logger).getTextArea());
         gameArea.add(statusBar.getStatusBarTable());
@@ -173,7 +189,28 @@ public class GuiView extends SwingView
         gameArea.setVisible(true);
         gameArea.show();
         gameArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        logger.printMessage("Game starts!!!\n");
+        for(int i = 0; i < 100; i++)
+        {
+            if (i != 0)
+            {
+                try
+                {
+                    Thread.sleep(100);
+                }
+                catch (Exception e)
+                {}
+            }
+            panel.removeAll();
+            for (int j = 0; j < 100; j++)
+            {
+                if (j == i)
+                    panel.add(new JLabel(new ImageIcon(newImage)));
+                else
+                    panel.add(new JLabel(new ImageIcon(newImage2)));
+            }
+            panel.revalidate();
+            gameArea.show();
+        }
+        logger.printMessage("God:Game starts!!!\n");
     }
 }
