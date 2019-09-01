@@ -2,6 +2,7 @@ package Swingy.src.main.java.com.unit.view;
 import javax.swing.*;
 import java.util.*;
 import java.io.*;
+import Swingy.src.main.java.com.unit.controller.*;
 import Swingy.src.main.java.com.unit.model.*;
 import java.sql.*;
 
@@ -92,7 +93,8 @@ public class ConsoleView extends SwingView
             }
             Hero hero = new Hero.HeroBuilder().setName(name).setHeroClass(heroClass)
                     .setLevel(level).setExperience(experience).setAttack(attack)
-                    .setDefense(defense).setHit(hit).build();
+                    .setDefense(defense).setHit(hit).setMovement(new MovementConsole())
+                    .build();
             if (input.validate(hero) == 1)
             {
                 //input.addChar(hero);
@@ -102,11 +104,13 @@ public class ConsoleView extends SwingView
         }
         else
         {
+            Hero hero;
             System.out.println("Enter name of warrior you want to play as:");
             this.printDatabase();
             finalHero = in.next();
-
-            return input.setFinalHero(finalHero);
+            hero = input.setFinalHero(finalHero);
+            hero.setMovement(new MovementConsole());
+            return hero;
 
         }
         return null;

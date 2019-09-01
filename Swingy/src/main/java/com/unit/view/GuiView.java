@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import Swingy.src.main.java.com.unit.model.*;
+import Swingy.src.main.java.com.unit.controller.*;
 
 public class GuiView extends SwingView
 {
@@ -111,8 +112,9 @@ public class GuiView extends SwingView
             Validate.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent e){
                     Hero hero = new Hero.HeroBuilder().setName(name.getText()).setHeroClass(cls.getText())
-                    .setLevel(Integer.parseInt(level.getText())).setExperience(Integer.parseInt(experience.getText())).setAttack(Integer.parseInt(attack.getText()))
-                    .setDefense(Integer.parseInt(defence.getText())).setHit(Integer.parseInt(hit.getText())).build();
+                    .setLevel(Integer.parseInt(level.getText())).setExperience(Integer.parseInt(experience.getText()))
+                    .setAttack(Integer.parseInt(attack.getText())).setDefense(Integer.parseInt(defence.getText()))
+                    .setHit(Integer.parseInt(hit.getText())).setMovement(new MovementGui()).build();
                     if (input.validate(hero) == 1)
                     {
                         //input.addChar(hero);
@@ -152,6 +154,7 @@ public class GuiView extends SwingView
             {
                 System.out.println(e);
             }
+            this.hero.setMovement(new MovementGui());
             return this.hero;
     }
     public void deinitView()

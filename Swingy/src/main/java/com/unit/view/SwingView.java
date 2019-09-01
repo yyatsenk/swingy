@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.util.*;
 import java.io.*;
 import Swingy.src.main.java.com.unit.model.*;
+import Swingy.src.main.java.com.unit.controller.*;
 
 public abstract class SwingView
 {

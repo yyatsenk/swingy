@@ -1,4 +1,4 @@
-package Swingy.src.main.java.com.unit.model;
+package Swingy.src.main.java.com.unit.controller;
 import java.util.*;
 import java.io.*;
 import javax.validation.constraints.Min;
@@ -10,6 +10,7 @@ import javax.validation.Valid;
 // TODO : set proper validation attributes
 public class Hero
 {
+    private Movement move;
     @NotNull
     private String name;
     private String heroClass;
@@ -57,6 +58,14 @@ public class Hero
     {
         return hit;
     }
+    public Movement getMovement()
+    {
+        return move;
+    }
+    public void setMovement(Movement m)
+    {
+        this.move = m;
+    }
     private Hero(HeroBuilder builder) {
 		this.name = builder.name;
         this.heroClass = builder.heroClass;
@@ -67,6 +76,7 @@ public class Hero
 		this.hit = builder.hit;
 	}
     public static class HeroBuilder{
+        private Movement move;
         private String name;
         private String heroClass;
         private int level;
@@ -105,6 +115,11 @@ public class Hero
 			this.hit = hit;
 			return this;
         }
+        public HeroBuilder setMovement(Movement m) {
+			this.move = m;
+			return this;
+        }
+        
         public Hero build(){
 			return new Hero(this);
 		}

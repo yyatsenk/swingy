@@ -5,6 +5,7 @@ import java.util.*;
 import java.io.*;
 import javax.swing.*;
 import javax.swing.table.*;
+import Swingy.src.main.java.com.unit.controller.*;
 import Swingy.src.main.java.com.unit.model.*;
 
 public class GuiStatusBar

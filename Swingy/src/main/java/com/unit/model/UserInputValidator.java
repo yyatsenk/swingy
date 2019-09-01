@@ -1,7 +1,7 @@
 package Swingy.src.main.java.com.unit.model;
-import javax.swing.*;
 import java.util.*;
 import java.io.*;
+import Swingy.src.main.java.com.unit.controller.*;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
