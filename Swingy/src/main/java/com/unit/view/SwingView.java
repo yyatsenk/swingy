@@ -9,7 +9,7 @@ public abstract class SwingView
 {
     public UserInputHandeler input = new UserInputMySQL();
     public Logger logger;
-
+    int[][] map;
     protected abstract void printDatabase();
 
     public abstract void initView();

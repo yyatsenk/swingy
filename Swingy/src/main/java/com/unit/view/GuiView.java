@@ -155,6 +155,7 @@ public class GuiView extends SwingView
                 System.out.println(e);
             }
             this.hero.setMovement(new MovementGui());
+            map = new int[hero.getCharLevel() * 10][hero.getCharLevel() * 10];
             return this.hero;
     }
     public void deinitView()

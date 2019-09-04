@@ -29,29 +29,40 @@ public class ConsoleView extends SwingView
 
     public void printMap(int width, int height)
     {
+        // int i = -1;
+        // int j = -1;
+
+        // while (++i != height)
+        // {
+        //     if (i == 0 || i == height - 1)
+        //     {
+        //         while (++j != width)
+        //             System.out.print("#");
+        //         System.out.println("");
+        //     }
+        //     else
+        //     {
+        //         while (++j != width)
+        //         {
+        //             if (j == 0 || j == width - 1)
+        //                 System.out.print("#");
+        //             else
+        //                 System.out.print(" ");
+        //         }
+        //         System.out.println("");
+        //     }
+        //     j = -1;
+        // }
         int i = -1;
         int j = -1;
-
-        while (++i != height)
+        while (++i < map.length)
         {
-            if (i == 0 || i == height - 1)
+            while (++j < map[i].length)
             {
-                while (++j != width)
-                    System.out.print("#");
-                System.out.println("");
-            }
-            else
-            {
-                while (++j != width)
-                {
-                    if (j == 0 || j == width - 1)
-                        System.out.print("#");
-                    else
-                        System.out.print(" ");
-                }
-                System.out.println("");
+                System.out.print(map[i][j]);
             }
             j = -1;
+            System.out.print("\n");
         }
     }
     public Hero  getUserInput()
@@ -110,6 +121,8 @@ public class ConsoleView extends SwingView
             finalHero = in.next();
             hero = input.setFinalHero(finalHero);
             hero.setMovement(new MovementConsole());
+            map = new int[hero.getCharLevel() * 10][hero.getCharLevel() * 10];
+            map[hero.getCharLevel() * 5][hero.getCharLevel() * 5] = 1;
             return hero;
 
         }

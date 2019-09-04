@@ -37,6 +37,14 @@ import Swingy.src.main.java.com.unit.model.*;
 					view.startGame(500, 500, player);
 				System.out.println("Player name = " + player.getCharName());
 				player.getMovement().up();
+				view.printMap(20,30);
+				// for (int j = 0; j < 2000; j++)
+				// {
+				// 	view.printMap(20,30);
+				// 	Thread.sleep(1000);
+				// 	System.out.print("\033[H\033[2J");  
+				// 	System.out.flush();
+				// }
 				/*
 				view.spreadWarriors();
 				if (KEY_UP pressed)
