@@ -9,6 +9,7 @@ public abstract class SwingView
 {
     public UserInputHandeler input = new UserInputMySQL();
     public Logger logger;
+    public Listener listener;
     protected int[][] map;
     protected abstract void printDatabase();
 
@@ -17,6 +18,7 @@ public abstract class SwingView
     public abstract void startGame(int width, int height, Hero hero);
     public abstract void printMap(int width, int height);
     public abstract void deinitView();
+    public abstract void spreadWarriors();
     public int[][] getMap()
     {
         return map;

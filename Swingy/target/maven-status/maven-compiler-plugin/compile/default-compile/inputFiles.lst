@@ -4,9 +4,12 @@
 /home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/model/LoggerGui.java
 /home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/model/Logger.java
 /home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/model/UserInputMySQL.java
+/home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/controller/Listener.java
 /home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/controller/MovementConsole.java
 /home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/controller/SwingTest.java
 /home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/model/LoggerConsole.java
+/home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/controller/ListenerConsole.java
+/home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/controller/ListenerGui.java
 /home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/controller/Hero.java
 /home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/controller/MovementGui.java
 /home/yyatsenko/unit/swingy/Swingy/src/main/java/com/unit/view/GuiStatusBar.java

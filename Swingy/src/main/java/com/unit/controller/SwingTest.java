@@ -36,29 +36,14 @@ import Swingy.src.main.java.com.unit.model.*;
 				if (player != null)
 					view.startGame(500, 500, player);
 				System.out.println("Player name = " + player.getCharName());
-				//player.getMovement().up(view.getMap(), player.getPosX(), player.getPosY());
+				view.spreadWarriors();
 				view.printMap(20,30);
-				for (int j = 0; ; j++)
+				while (true)
 				{
-					try
-					{
-						char keyChar = (char)System.in.read();
-						if (keyChar == 'w')
-							player.getMovement().up(view.getMap(), player);
-						if (keyChar == 's')
-							player.getMovement().down(view.getMap(), player);
-						if (keyChar == 'a')
-							player.getMovement().left(view.getMap(), player);
-						if (keyChar == 'd')
-							player.getMovement().right(view.getMap(), player);
-						if (keyChar == 'q')
-							break;
-					}
-					catch(Exception e)
-					{}
+					if (view.listener.listen(player, view) == 1)
+						break;
 					view.printMap(20,30);
-					// System.out.print("\033[H\033[2J");  
-					// System.out.flush();
+					System.out.print("\n\n");  
 				}
 				/*
 				view.spreadWarriors();

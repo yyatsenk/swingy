@@ -6,6 +6,7 @@ import Swingy.src.main.java.com.unit.controller.*;
 import Swingy.src.main.java.com.unit.model.*;
 import java.sql.*;
 
+
 public class ConsoleView extends SwingView
 {
     private Scanner in = new Scanner(System.in);
@@ -21,6 +22,7 @@ public class ConsoleView extends SwingView
     public ConsoleView()
     {
         logger = LoggerConsole.getLogger();
+        listener = new ListenerConsole();
     }
     public void initView()
     {
@@ -29,30 +31,6 @@ public class ConsoleView extends SwingView
 
     public void printMap(int width, int height)
     {
-        // int i = -1;
-        // int j = -1;
-
-        // while (++i != height)
-        // {
-        //     if (i == 0 || i == height - 1)
-        //     {
-        //         while (++j != width)
-        //             System.out.print("#");
-        //         System.out.println("");
-        //     }
-        //     else
-        //     {
-        //         while (++j != width)
-        //         {
-        //             if (j == 0 || j == width - 1)
-        //                 System.out.print("#");
-        //             else
-        //                 System.out.print(" ");
-        //         }
-        //         System.out.println("");
-        //     }
-        //     j = -1;
-        // }
         int i = -1;
         int j = -1;
         while (++i < map.length)
@@ -155,5 +133,18 @@ public class ConsoleView extends SwingView
     public void startGame(int width, int height, Hero hero)
     {
 
+    }
+    public void spreadWarriors()
+    {
+        Random rand =  new Random();
+        List<Hero> villainList = new ArrayList<Hero> ();
+        for (int i = 0; i < 5; i++)
+        {
+            villainList.add(new Hero.HeroBuilder().setName("Devil").setLevel(4).setExperience(5000).setPosX(rand.nextInt(20)).setPosY(rand.nextInt(20)).build());
+        }
+        for (Hero h : villainList) {
+            if (map[h.getPosY()][h.getPosX()] == 0)
+                map[h.getPosY()][h.getPosX()] = h.getCharLevel();
+        }
     }
 }

@@ -91,7 +91,9 @@ public class Hero
         this.experience = builder.experience;
         this.attack = builder.attack;
 		this.defense = builder.defense;
-		this.hit = builder.hit;
+        this.hit = builder.hit;
+        this.posX = builder.posX;
+        this.posY = builder.posY;
 	}
     public static class HeroBuilder{
         private Movement move;
@@ -102,6 +104,8 @@ public class Hero
         private int attack;
         private int defense;
         private int hit;
+        private int posX = 0;
+        private int posY = 0;
 
         public HeroBuilder()
         {}
@@ -135,6 +139,14 @@ public class Hero
         }
         public HeroBuilder setMovement(Movement m) {
 			this.move = m;
+			return this;
+        }
+        public HeroBuilder setPosX(int x) {
+			this.posX = x;
+			return this;
+        }
+        public HeroBuilder setPosY(int y) {
+			this.posY = y;
 			return this;
         }
         

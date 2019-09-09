@@ -38,6 +38,7 @@ public class GuiView extends SwingView
     public GuiView()
     {
         logger = LoggerGui.getLogger();
+        listener = new ListenerGui();
     }
     private void setHero(Hero h)
     {
@@ -216,5 +217,9 @@ public class GuiView extends SwingView
             gameArea.show();
         }
         logger.printMessage("God:Game starts!!!\n");
+    }
+    public void spreadWarriors()
+    {
+        
     }
 }
