@@ -6,20 +6,52 @@ import Swingy.src.main.java.com.unit.model.*;
 
 public class MovementConsole implements Movement
 {
-    public void up()
+    public int [][] up(int [][] map, Hero player)
     {
-
+        if (player.getPosY() - 1 < 0)
+            System.out.println("You won!");
+        else
+        {
+            map[player.getPosY()][player.getPosX()] = 0;
+            player.setPosY(player.getPosY() - 1);
+            map[player.getPosY()][player.getPosX()] = 1;
+        }
+        return map;
     }
-    public void down()
+    public int [][] down(int [][] map, Hero player)
     {
-
+        if (player.getPosY() + 1 > map.length - 1)
+            System.out.println("You won!");
+        else
+        {
+            map[player.getPosY()][player.getPosX()] = 0;
+            player.setPosY(player.getPosY() + 1);
+            map[player.getPosY()][player.getPosX()] = 1;
+        }
+        return map;
     }
-    public void left()
+    public int [][] left(int [][] map, Hero player)
     {
-
+        if (player.getPosX() - 1 < 0)
+            System.out.println("You won!");
+        else
+        {
+            map[player.getPosY()][player.getPosX()] = 0;
+            player.setPosX(player.getPosX() - 1);
+            map[player.getPosY()][player.getPosX()] = 1;
+        }
+        return map;
     }
-    public void right()
+    public int [][] right(int [][] map, Hero player)
     {
-        
+        if (player.getPosX() + 1 > map[0].length -  1)
+            System.out.println("You won!");
+        else
+        {
+            map[player.getPosY()][player.getPosX()] = 0;
+            player.setPosX(player.getPosX() + 1);
+            map[player.getPosY()][player.getPosX()] = 1;
+        }
+        return map;
     }
 }

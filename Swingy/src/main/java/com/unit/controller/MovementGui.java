@@ -6,20 +6,29 @@ import Swingy.src.main.java.com.unit.model.*;
 
 public class MovementGui implements Movement
 {
-    public void up()
+    public int [][] up(int [][] map, Hero player)
     {
         System.out.println("MovementGui: go UP");
+        if (player.getPosY() - 1 < 0)
+            System.out.println("You won!");
+        else
+        {
+            map[player.getPosY()][player.getPosX()] = 0;
+            player.setPosY(player.getPosY() - 1);
+            map[player.getPosY()][player.getPosX()] = 1;
+        }
+        return map;
     }
-    public void down()
+    public int [][] down(int [][] map, Hero player)
     {
-
+        return null;
     }
-    public void left()
+    public int [][] left(int [][] map, Hero player)
     {
-
+        return null;
     }
-    public void right()
+    public int [][] right(int [][] map, Hero player)
     {
-        
+        return null;
     }
 }

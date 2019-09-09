@@ -22,6 +22,8 @@ public class Hero
     private int defense;
     @NotNull
     private int hit;
+    private int posX = 0;
+    private int posY = 0;
     Hero()
     {
         
@@ -61,6 +63,22 @@ public class Hero
     public Movement getMovement()
     {
         return move;
+    }
+    public int getPosX()
+    {
+        return posX;
+    }
+    public int getPosY()
+    {
+        return posY;
+    }
+    public void setPosX(int x)
+    {
+        this.posX = x;
+    }
+    public void setPosY(int y)
+    {
+        this.posY = y;
     }
     public void setMovement(Movement m)
     {
