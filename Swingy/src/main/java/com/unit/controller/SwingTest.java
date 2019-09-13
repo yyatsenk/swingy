@@ -38,13 +38,13 @@ import Swingy.src.main.java.com.unit.model.*;
 				System.out.println("Player name = " + player.getCharName());
 				view.spreadWarriors();
 				view.printMap(20,30);
-				while (true)
-				{
+				//while (true)
+				//{
 					if (view.listener.listen(player, view) == 1)
-						break;
+						;//break;
 					view.printMap(20,30);
 					System.out.print("\n\n");  
-				}
+				//}
 				/*
 				view.spreadWarriors();
 				if (KEY_UP pressed)

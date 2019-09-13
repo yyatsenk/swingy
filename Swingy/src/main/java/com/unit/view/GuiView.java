@@ -13,9 +13,10 @@ import Swingy.src.main.java.com.unit.controller.*;
 
 public class GuiView extends SwingView
 {
-    Hero hero;
+    public Hero hero;
     private JFrame f;
-    private JFrame gameArea;
+    public JFrame gameArea;//!!!!!
+    public JPanel panel;
     private JButton buttCreate;
     private JButton buttChoose;
     private JButton Validate;
@@ -26,6 +27,10 @@ public class GuiView extends SwingView
     private JTextField defence;
     private JTextField attack;
     private JTextField hit;
+    BufferedImage background;
+    BufferedImage herotexture;
+    Image backgroundSized;
+    Image herotextureSized;
     String[] columnNames = {"Name",
                         "Class",
                         "Level",
@@ -118,7 +123,7 @@ public class GuiView extends SwingView
                     .setHit(Integer.parseInt(hit.getText())).setMovement(new MovementGui()).build();
                     if (input.validate(hero) == 1)
                     {
-                        //input.addChar(hero);
+                        input.addChar(hero);
                         // game starts
                     }
                     setHero(hero);
@@ -156,7 +161,10 @@ public class GuiView extends SwingView
                 System.out.println(e);
             }
             this.hero.setMovement(new MovementGui());
-            map = new int[hero.getCharLevel() * 10][hero.getCharLevel() * 10];
+            map = new int[(hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2)][(hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2)];
+            map[((hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2))/2][((hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2))/2] = 1;
+            hero.setPosX(((hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2))/2);
+            hero.setPosY(((hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2))/2);
             return this.hero;
     }
     public void deinitView()
@@ -164,27 +172,43 @@ public class GuiView extends SwingView
         f.dispose();
         System.out.println("Here we encounter the end\n");
     }
+
+    public void refresh()
+    {
+        panel.removeAll();
+        for (int[] m: map)
+        {
+            for (int numb: m)
+            {
+                if (numb == 0)
+                    panel.add(new JLabel(new ImageIcon(backgroundSized)));
+                else //if (numb == 1)
+                    panel.add(new JLabel(new ImageIcon(herotextureSized)));
+            }
+        }
+        panel.revalidate();
+        gameArea.show();
+    }
+
     public void startGame(int width, int height, Hero hero)
     {
         if (f.isVisible())
             f.setVisible(false);
         gameArea = new JFrame("Swingy");
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(10,10));
+        panel = new JPanel();
+        panel.setLayout(new GridLayout(map.length, map[0].length));
         
-        BufferedImage img = null;
-        BufferedImage img2 = null;
         try {
-            img = ImageIO.read(new File("/home/yyatsenk/Downloads/1200px-Pac_Man.svg.png"));
-            img2 = ImageIO.read(new File("/home/yyatsenk/Downloads/solid-green-background.jpg"));
+            herotexture = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/textures-pixel-heart-1.png"));
+            background = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/peter-burroughs-stonetexture.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Image newImage = img.getScaledInstance(width / 10, height / 10, Image.SCALE_DEFAULT);
-        Image newImage2 = img2.getScaledInstance(width / 10, height / 10, Image.SCALE_DEFAULT);
+        herotextureSized = herotexture.getScaledInstance(width / map.length, height / map.length, Image.SCALE_DEFAULT);
+        backgroundSized = background.getScaledInstance(width / map.length, height / map.length, Image.SCALE_DEFAULT);
         GuiStatusBar statusBar = GuiStatusBar.getGuiStatusBar(hero);
         gameArea.setSize(width, height);
-        panel.setBounds(40,80,200,200);
+        panel.setBounds(0,0,250,250);
         panel.setBackground(Color.gray);
         gameArea.add(panel);  
         gameArea.add(((LoggerGui)logger).getTextArea());
@@ -192,30 +216,9 @@ public class GuiView extends SwingView
         gameArea.add(statusBar.getLevelBar());
         gameArea.setLayout(null);  
         gameArea.setVisible(true);
+        refresh();
         gameArea.show();
         gameArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        for(int i = 0; i < 100; i++)
-        {
-            if (i != 0)
-            {
-                try
-                {
-                    Thread.sleep(100);
-                }
-                catch (Exception e)
-                {}
-            }
-            panel.removeAll();
-            for (int j = 0; j < 100; j++)
-            {
-                if (j == i)
-                    panel.add(new JLabel(new ImageIcon(newImage)));
-                else
-                    panel.add(new JLabel(new ImageIcon(newImage2)));
-            }
-            panel.revalidate();
-            gameArea.show();
-        }
         logger.printMessage("God:Game starts!!!\n");
     }
     public void spreadWarriors()

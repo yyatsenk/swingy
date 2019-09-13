@@ -46,11 +46,11 @@ public class GuiStatusBar
                 return cellInTable;
             }
         };
-        statusBarTable.setBounds(0, 400, 500, 100);
+        statusBarTable.setBounds(0, 370, 500, 50);
         statusBarTable.setShowGrid(false);
 
         levelBar = new JProgressBar(); 
-        levelBar.setBounds(50, 380, 200, 20);
+        levelBar.setBounds(10, 300, 480, 40);
         levelBar.setValue(30);
         levelBar.setStringPainted(true); 
         levelBar.setString(Integer.toString(hero.getCharLevel() * 1000) + " XP");

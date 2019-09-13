@@ -99,10 +99,10 @@ public class ConsoleView extends SwingView
             finalHero = in.next();
             hero = input.setFinalHero(finalHero);
             hero.setMovement(new MovementConsole());
-            map = new int[hero.getCharLevel() * 10][hero.getCharLevel() * 10];
-            map[hero.getCharLevel() * 5][hero.getCharLevel() * 5] = 1;
-            hero.setPosX(hero.getCharLevel() * 5);
-            hero.setPosY(hero.getCharLevel() * 5);
+            map = new int[(hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2)][(hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2)];
+            map[((hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2))/2][((hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2))/2] = 1;
+            hero.setPosX(((hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2))/2);
+            hero.setPosY(((hero.getCharLevel() - 1) * 5 + 10 - (hero.getCharLevel() % 2))/2);
             return hero;
 
         }
