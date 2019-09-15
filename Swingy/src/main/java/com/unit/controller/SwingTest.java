@@ -36,7 +36,7 @@ import Swingy.src.main.java.com.unit.model.*;
 				if (player != null)
 					view.startGame(500, 500, player);
 				System.out.println("Player name = " + player.getCharName());
-				view.spreadWarriors();
+				//view.spreadWarriors();
 				view.printMap(20,30);
 				//while (true)
 				//{

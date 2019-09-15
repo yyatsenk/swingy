@@ -15,19 +15,19 @@ public class ListenerGui extends Listener
         KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
-              if (e.getKeyCode() == KeyEvent.VK_W) {
+              if (e.getKeyCode() == KeyEvent.VK_W && e.getID() == KeyEvent.KEY_PRESSED) {
                 player.getMovement().up(view.getMap(), player);
                 view.logger.printMessage("Go up\n");
               }
-              if (e.getKeyCode() == KeyEvent.VK_A) {
+              if (e.getKeyCode() == KeyEvent.VK_A && e.getID() == KeyEvent.KEY_PRESSED) {
                 player.getMovement().left(view.getMap(), player);
                 view.logger.printMessage("Go left\n");
               }
-              if (e.getKeyCode() == KeyEvent.VK_D) {
+              if (e.getKeyCode() == KeyEvent.VK_D && e.getID() == KeyEvent.KEY_PRESSED) {
                 player.getMovement().right(view.getMap(), player);
                 view.logger.printMessage("Go right\n");
               }
-              if (e.getKeyCode() == KeyEvent.VK_S) {
+              if (e.getKeyCode() == KeyEvent.VK_S && e.getID() == KeyEvent.KEY_PRESSED) {
                 player.getMovement().down(view.getMap(), player);
                 view.logger.printMessage("Go down\n");
               }
@@ -38,13 +38,6 @@ public class ListenerGui extends Listener
             }
           };
           KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
-        // GuiView guiView = (GuiView)view;
-        // guiView.panel.addContainerListener(new ContainerAdapter() {
-        //     public void windowOpened(WindowEvent e) {
-        //         System.out.println("Window Opened Event");
-        //       }
-        
-        // });
         return 0;
     }
 }

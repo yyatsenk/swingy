@@ -18,7 +18,20 @@ public abstract class SwingView
     public abstract void startGame(int width, int height, Hero hero);
     public abstract void printMap(int width, int height);
     public abstract void deinitView();
-    public abstract void spreadWarriors();
+    //public abstract void maintainCross();
+    public void spreadWarriors(int mapSize)
+    {
+        Random rand =  new Random();
+        List<Hero> villainList = new ArrayList<Hero> ();
+        for (int i = 0; i < 5; i++)
+        {
+            villainList.add(new Hero.HeroBuilder().setName("Devil").setLevel(4).setExperience(5000).setPosX(rand.nextInt(mapSize)).setPosY(rand.nextInt(mapSize)).build());
+        }
+        for (Hero h : villainList) {
+            if (map[h.getPosY()][h.getPosX()] == 0)
+                map[h.getPosY()][h.getPosX()] = h.getCharLevel();
+        }
+    }
     public int[][] getMap()
     {
         return map;

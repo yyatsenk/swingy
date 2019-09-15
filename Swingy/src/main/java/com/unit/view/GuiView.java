@@ -31,6 +31,8 @@ public class GuiView extends SwingView
     BufferedImage herotexture;
     Image backgroundSized;
     Image herotextureSized;
+    BufferedImage devil;
+    Image devilSized;
     String[] columnNames = {"Name",
                         "Class",
                         "Level",
@@ -182,8 +184,10 @@ public class GuiView extends SwingView
             {
                 if (numb == 0)
                     panel.add(new JLabel(new ImageIcon(backgroundSized)));
-                else //if (numb == 1)
+                else if (numb == 1)
                     panel.add(new JLabel(new ImageIcon(herotextureSized)));
+                else
+                    panel.add(new JLabel(new ImageIcon(devilSized)));
             }
         }
         panel.revalidate();
@@ -196,33 +200,37 @@ public class GuiView extends SwingView
             f.setVisible(false);
         gameArea = new JFrame("Swingy");
         panel = new JPanel();
+        ((LoggerGui)logger).getTextArea().setEditable(false);
+        JScrollPane scrolll = new JScrollPane(((LoggerGui)logger).getTextArea());
+        scrolll.setBounds(255, 0, 250, 250);
         panel.setLayout(new GridLayout(map.length, map[0].length));
-        
+
         try {
-            herotexture = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/textures-pixel-heart-1.png"));
-            background = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/peter-burroughs-stonetexture.jpg"));
+            herotexture = ImageIO.read(new File("/home/yyatsenk/Downloads/1200px-Pac_Man.svg.png"));
+            background = ImageIO.read(new File("/home/yyatsenk/Downloads/solid-green-background.jpg"));
+            devil = ImageIO.read(new File("/home/yyatsenk/Downloads/1200px-Pac_Man.svg.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         herotextureSized = herotexture.getScaledInstance(width / map.length, height / map.length, Image.SCALE_DEFAULT);
         backgroundSized = background.getScaledInstance(width / map.length, height / map.length, Image.SCALE_DEFAULT);
+        devilSized = devil.getScaledInstance(width / map.length, height / map.length, Image.SCALE_DEFAULT);
+
+        
         GuiStatusBar statusBar = GuiStatusBar.getGuiStatusBar(hero);
         gameArea.setSize(width, height);
         panel.setBounds(0,0,250,250);
         panel.setBackground(Color.gray);
         gameArea.add(panel);  
-        gameArea.add(((LoggerGui)logger).getTextArea());
+        gameArea.add(scrolll);
         gameArea.add(statusBar.getStatusBarTable());
         gameArea.add(statusBar.getLevelBar());
-        gameArea.setLayout(null);  
+        spreadWarriors(map.length - 1);
+        gameArea.setLayout(null);
         gameArea.setVisible(true);
         refresh();
         gameArea.show();
         gameArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         logger.printMessage("God:Game starts!!!\n");
-    }
-    public void spreadWarriors()
-    {
-        
     }
 }

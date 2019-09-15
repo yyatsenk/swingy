@@ -13,6 +13,8 @@ public class MovementGui implements Movement
             System.out.println("You won!");
         else
         {
+            if (map[player.getPosY() - 1][player.getPosX()] != 0)
+                System.out.println("Enter f if wanna fight or r to run");
             map[player.getPosY()][player.getPosX()] = 0;
             player.setPosY(player.getPosY() - 1);
             map[player.getPosY()][player.getPosX()] = 1;
