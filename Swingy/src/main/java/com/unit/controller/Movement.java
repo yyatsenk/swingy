@@ -1,8 +1,9 @@
 package Swingy.src.main.java.com.unit.controller;
+import Swingy.src.main.java.com.unit.view.*;
 
 public interface  Movement {
-    public int [][] up(int [][] map, Hero player);
-    public int [][] down(int [][] map, Hero player);
-    public int [][] left(int [][] map, Hero player);
-    public int [][] right(int [][] map, Hero player);
+    public int [][] up(SwingView view, Hero player);
+    public int [][] down(SwingView view, Hero player);
+    public int [][] left(SwingView view, Hero player);
+    public int [][] right(SwingView view, Hero player);
 }

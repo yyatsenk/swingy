@@ -15,6 +15,7 @@ Swingy/src/main/java/com/unit/controller/ListenerConsole.class
 Swingy/src/main/java/com/unit/model/Logger.class
 Swingy/src/main/java/com/unit/controller/SwingTest.class
 Swingy/src/main/java/com/unit/model/UserInputValidator.class
+Swingy/src/main/java/com/unit/controller/MovementGui$1.class
 Swingy/src/main/java/com/unit/controller/Movement.class
 Swingy/src/main/java/com/unit/view/GuiView$1.class
 Swingy/src/main/java/com/unit/view/ConsoleView.class

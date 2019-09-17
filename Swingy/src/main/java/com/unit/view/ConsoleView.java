@@ -134,17 +134,4 @@ public class ConsoleView extends SwingView
     {
 
     }
-    public void spreadWarriors()
-    {
-        Random rand =  new Random();
-        List<Hero> villainList = new ArrayList<Hero> ();
-        for (int i = 0; i < 5; i++)
-        {
-            villainList.add(new Hero.HeroBuilder().setName("Devil").setLevel(4).setExperience(5000).setPosX(rand.nextInt(20)).setPosY(rand.nextInt(20)).build());
-        }
-        for (Hero h : villainList) {
-            if (map[h.getPosY()][h.getPosX()] == 0)
-                map[h.getPosY()][h.getPosX()] = h.getCharLevel();
-        }
-    }
 }

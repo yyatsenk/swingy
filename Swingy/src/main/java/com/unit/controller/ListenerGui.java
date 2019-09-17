@@ -10,25 +10,26 @@ import Swingy.src.main.java.com.unit.model.*;
 
 public class ListenerGui extends Listener
 {
+    private KeyEventDispatcher keyEventDispatcher;
     public int listen(final Hero player, final SwingView view)
     {
-        KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
+        keyEventDispatcher = new KeyEventDispatcher() {
             @Override
             public boolean dispatchKeyEvent(KeyEvent e) {
               if (e.getKeyCode() == KeyEvent.VK_W && e.getID() == KeyEvent.KEY_PRESSED) {
-                player.getMovement().up(view.getMap(), player);
+                player.getMovement().up(view, player);
                 view.logger.printMessage("Go up\n");
               }
               if (e.getKeyCode() == KeyEvent.VK_A && e.getID() == KeyEvent.KEY_PRESSED) {
-                player.getMovement().left(view.getMap(), player);
+                player.getMovement().left(view, player);
                 view.logger.printMessage("Go left\n");
               }
               if (e.getKeyCode() == KeyEvent.VK_D && e.getID() == KeyEvent.KEY_PRESSED) {
-                player.getMovement().right(view.getMap(), player);
+                player.getMovement().right(view, player);
                 view.logger.printMessage("Go right\n");
               }
               if (e.getKeyCode() == KeyEvent.VK_S && e.getID() == KeyEvent.KEY_PRESSED) {
-                player.getMovement().down(view.getMap(), player);
+                player.getMovement().down(view, player);
                 view.logger.printMessage("Go down\n");
               }
               GuiView guiView = (GuiView)view;
@@ -39,5 +40,9 @@ public class ListenerGui extends Listener
           };
           KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
         return 0;
+    }
+    public KeyEventDispatcher getKeyEventDispatcher()
+    {
+      return keyEventDispatcher;
     }
 }
