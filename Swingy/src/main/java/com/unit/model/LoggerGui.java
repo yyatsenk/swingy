@@ -13,6 +13,7 @@ public class LoggerGui extends Logger
     {
         textArea = new JTextArea();
         textArea.setBounds(255, 0, 250, 250);
+        textArea.setCaretPosition(textArea.getDocument().getLength());
     }
     public void printMessage(String str)
     {
