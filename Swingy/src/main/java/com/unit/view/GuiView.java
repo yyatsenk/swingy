@@ -172,7 +172,6 @@ public class GuiView extends SwingView
     public void deinitView()
     {
         f.dispose();
-        System.out.println("Here we encounter the end\n");
     }
 
     public void refresh()
@@ -206,9 +205,9 @@ public class GuiView extends SwingView
         panel.setLayout(new GridLayout(map.length, map[0].length));
 
         try {
-            herotexture = ImageIO.read(new File("/home/yyatsenk/Downloads/1200px-Pac_Man.svg.png"));
-            background = ImageIO.read(new File("/home/yyatsenk/Downloads/solid-green-background.jpg"));
-            devil = ImageIO.read(new File("/home/yyatsenk/Downloads/1200px-Pac_Man.svg.png"));
+            herotexture = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/textures-pixel-heart-1.png"));
+            background = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/peter-burroughs-stonetexture.jpg"));
+            devil = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/textures-pixel-heart-1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -232,5 +231,17 @@ public class GuiView extends SwingView
         gameArea.show();
         gameArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         logger.printMessage("God:Game starts!!!\n");
+    }
+    public void resultMessage(String result)
+    {
+        gameArea.setEnabled(false);
+        JFrame res = new JFrame(result);
+        res.setSize(200, 200);
+        JLabel label = new JLabel("YOU " + result + "!"); 
+        label.setBounds(70, 45, 100, 20);
+        res.add(label);
+        res.setLayout(null);
+        res.setVisible(true);
+        res.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

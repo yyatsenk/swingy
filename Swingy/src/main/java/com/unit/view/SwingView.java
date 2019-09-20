@@ -19,6 +19,7 @@ public abstract class SwingView
     public abstract void startGame(int width, int height, Hero hero);
     public abstract void printMap(int width, int height);
     public abstract void deinitView();
+    public abstract void resultMessage(String result);
     //public abstract void maintainCross();
     public void spreadWarriors(int mapSize)
     {

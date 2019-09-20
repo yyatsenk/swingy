@@ -8,8 +8,9 @@ import Swingy.src.main.java.com.unit.model.*;
 
 public class MovementGui implements Movement
 {
-    public int [][] up(final SwingView view, Hero player)
+    public int [][] up(final SwingView view, final Hero player)
     {
+        final int var = view.getMap()[player.getPosY() - 1][player.getPosX()];
         //System.out.println("In UP");
         if (player.getPosY() - 1 < 0)
             System.out.println("You won!");
@@ -17,16 +18,20 @@ public class MovementGui implements Movement
         {
             if (view.getMap()[player.getPosY() - 1][player.getPosX()] != 0)
             {
+                view.getMap()[player.getPosY()][player.getPosX()] = 0;
+                player.setPosY(player.getPosY() - 1);
+                view.getMap()[player.getPosY()][player.getPosX()] = 1;
                 Hero villian = null;
                 view.getLogger().printMessage("You should choose run or fight!\nYour opponent is");
                 for (Hero h : view.getVillainList()) {
-                    if (h.getPosY() == (player.getPosY() - 1) && h.getPosX() == player.getPosX())
+                    if (h.getPosY() == (player.getPosY()) && h.getPosX() == player.getPosX())
                     {
                         villian = h;
                         break ;
                     }
                     view.getLogger().printMessage(Integer.toString(h.getPosY()) + " " + Integer.toString(h.getPosX()) + "\n");
                 }
+                final int villianExp = villian.getCharExperience();
                 view.getLogger().printMessage("\nName :" + villian.getCharName() + "\n");
                 view.getLogger().printMessage("Class :" + villian.getCharClass() + "\n");
                 view.getLogger().printMessage("Experience :" + Integer.toString(villian.getCharExperience()) + "\n");
@@ -38,9 +43,20 @@ public class MovementGui implements Movement
                     public boolean dispatchKeyEvent(KeyEvent e) {
                         if (e.getKeyCode() == KeyEvent.VK_F && e.getID() == KeyEvent.KEY_PRESSED) {
                             view.getLogger().printMessage("\nFight\n");
+                            view.getMap()[player.getPosY()][player.getPosX()] = 1;
+                            if (villianExp > player.getCharExperience())
+                            {
+                                view.getLogger().printMessage("YOU LOSE!\n");
+                                view.resultMessage("LOSE");
+                            }
+                            else
+                            {
+                                player.setExperience(player.getCharExperience() + villianExp);
+                            }
                         }
                         if (e.getKeyCode() == KeyEvent.VK_R && e.getID() == KeyEvent.KEY_PRESSED) {
                             view.getLogger().printMessage("\nRun\n");
+                            view.getMap()[player.getPosY()][player.getPosX()] = var;
                         }
                         if (e.getKeyCode() == KeyEvent.VK_R || e.getKeyCode() == KeyEvent.VK_F)
                         {
@@ -53,9 +69,13 @@ public class MovementGui implements Movement
                 KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
 
             }
-            view.getMap()[player.getPosY()][player.getPosX()] = 0;
-            player.setPosY(player.getPosY() - 1);
-            view.getMap()[player.getPosY()][player.getPosX()] = 1;
+            else
+            {
+                if (view.getMap()[player.getPosY()][player.getPosX()] == 1)
+                    view.getMap()[player.getPosY()][player.getPosX()] = 0;
+                player.setPosY(player.getPosY() - 1);
+                view.getMap()[player.getPosY()][player.getPosX()] = 1;
+            }
         }
         return view.getMap();
     }

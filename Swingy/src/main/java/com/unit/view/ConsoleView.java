@@ -134,4 +134,8 @@ public class ConsoleView extends SwingView
     {
 
     }
+    public void resultMessage(String result)
+    {
+
+    }
 }

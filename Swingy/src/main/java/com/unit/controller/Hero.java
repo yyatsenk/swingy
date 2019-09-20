@@ -84,6 +84,10 @@ public class Hero
     {
         this.move = m;
     }
+    public void setExperience(int experience)
+    {
+        this.experience = experience;
+    }
     private Hero(HeroBuilder builder) {
 		this.name = builder.name;
         this.heroClass = builder.heroClass;

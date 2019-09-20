@@ -28,7 +28,6 @@ public class GuiStatusBar
             public Component prepareRenderer(
                 TableCellRenderer renderer, int row, int column)
             {
-                System.out.println(row);
                 Component cellInTable = super.prepareRenderer(renderer, row, column);
                 if (row == 0)
                 {
