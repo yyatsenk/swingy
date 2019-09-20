@@ -23,7 +23,8 @@ public class GuiStatusBar
             Integer.toString(hero.getCharDefense()), Integer.toString(hero.getCharHit())}};
         String[] columnNames = {"Name", "Class", "Level",
         "Experience","Defence", "Attack", "Hit"};
-        statusBarTable = new JTable(data, columnNames)
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        statusBarTable = new JTable(model)
         {
             public Component prepareRenderer(
                 TableCellRenderer renderer, int row, int column)
@@ -54,9 +55,11 @@ public class GuiStatusBar
         levelBar.setStringPainted(true); 
         levelBar.setString(Integer.toString(hero.getCharLevel() * 1000) + " XP");
     }
-    static GuiStatusBar getGuiStatusBar(Hero Hero)
+    public static GuiStatusBar getGuiStatusBar(Hero Hero)
     {
-        return new GuiStatusBar(Hero);
+        if (bar == null)
+            bar = new GuiStatusBar(Hero);
+        return bar;
     }
     public JTable getStatusBarTable()
     {

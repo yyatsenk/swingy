@@ -3,6 +3,8 @@ import java.util.*;
 import java.io.*;
 import java.awt.event.*;
 import java.awt.*;
+import javax.swing.*;//must be del
+import javax.swing.table.DefaultTableModel;//must be del
 import Swingy.src.main.java.com.unit.view.*;
 import Swingy.src.main.java.com.unit.model.*;
 
@@ -10,6 +12,13 @@ public class MovementGui implements Movement
 {
     private void cross(final SwingView view, final Hero player, final int var, String direction)
     {
+        // Must be replaced to GuiView.java or GuiStatusBar as refreshBar()
+        GuiStatusBar statusBar = GuiStatusBar.getGuiStatusBar(null);
+        JTable table = statusBar.getStatusBarTable();
+        final DefaultTableModel model = (DefaultTableModel)table.getModel();
+        model.setValueAt("3000", 1, 3);
+        statusBar.getLevelBar().setValue(70);
+        //-----------------------------------------------------------------
         view.getMap()[player.getPosY()][player.getPosX()] = 0;
         if (direction.equals("UP"))
             player.setPosY(player.getPosY() - 1);
@@ -68,7 +77,6 @@ public class MovementGui implements Movement
     }
     public int [][] up(final SwingView view, final Hero player)
     {
-        //System.out.println("In UP");
         if (player.getPosY() - 1 < 0)
         {
             System.out.println("You won!");
