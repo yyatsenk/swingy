@@ -12,11 +12,6 @@
   <name>Swingy</name>
   <url>http://maven.apache.org</url>
   <build>
-  <resources>
-     <resource>
-       <directory>texture_resources</directory>
-     </resource>
-   </resources>
   <plugins>
 
 <plugin>
