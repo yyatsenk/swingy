@@ -12,6 +12,11 @@
   <name>Swingy</name>
   <url>http://maven.apache.org</url>
   <build>
+  <resources>
+     <resource>
+       <directory>texture_resources</directory>
+     </resource>
+   </resources>
   <plugins>
 
 <plugin>
@@ -54,17 +59,6 @@
   </plugins>
 </build> 
   <dependencies>
-  <!-- <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-validator</artifactId>
-        <version>4.2.0.Final</version>
-    </dependency> -->
-
-    <!-- <dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-validator-annotation-processor</artifactId>
-        <version>4.2.0.Final</version>
-    </dependency> -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -106,11 +100,6 @@
     <artifactId>jaxb-api</artifactId>
     <version>2.3.0</version>
 </dependency>
-    <!-- <dependency>
-      <groupId>javax.validation</groupId>
-      <artifactId>validation-api</artifactId>
-      <version>1.0.0.GA</version>
-    </dependency> -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

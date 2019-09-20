@@ -53,6 +53,11 @@ public class GuiView extends SwingView
     }
     public void initView()
     {
+        if (input.establishConnection() == 0)
+		{
+			System.out.println("Database connection failed\n");
+			return ;
+		}
         f = new JFrame("Swingy");
 
 
@@ -205,9 +210,9 @@ public class GuiView extends SwingView
         panel.setLayout(new GridLayout(map.length, map[0].length));
 
         try {
-            herotexture = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/textures-pixel-heart-1.png"));
-            background = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/peter-burroughs-stonetexture.jpg"));
-            devil = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/textures-pixel-heart-1.png"));
+            herotexture = ImageIO.read(new File("/home/yyatsenk/Downloads/1200px-Pac_Man.svg.png"));
+            background = ImageIO.read(new File("/home/yyatsenk/Downloads/solid-green-background.jpg"));
+            devil = ImageIO.read(new File("/home/yyatsenk/Downloads/1200px-Pac_Man.svg.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -227,6 +232,7 @@ public class GuiView extends SwingView
         spreadWarriors(map.length - 1);
         gameArea.setLayout(null);
         gameArea.setVisible(true);
+        statusBar.updateProgressBar(hero.getCharExperience(), hero.getCharLevel());
         refresh();
         gameArea.show();
         gameArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

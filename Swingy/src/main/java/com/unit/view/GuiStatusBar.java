@@ -51,15 +51,26 @@ public class GuiStatusBar
 
         levelBar = new JProgressBar(); 
         levelBar.setBounds(10, 300, 480, 40);
-        levelBar.setValue(30);
         levelBar.setStringPainted(true); 
-        levelBar.setString(Integer.toString(hero.getCharLevel() * 1000) + " XP");
     }
     public static GuiStatusBar getGuiStatusBar(Hero Hero)
     {
         if (bar == null)
             bar = new GuiStatusBar(Hero);
         return bar;
+    }
+    public void updateBarTable(int row, int col, String val)
+    {
+        GuiStatusBar statusBar = GuiStatusBar.getGuiStatusBar(null);
+        JTable table = statusBar.getStatusBarTable();
+        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        model.setValueAt(val, row, col);
+    }
+    public void updateProgressBar(int experience, int level)
+    {
+        int xp = level * 1000 + (level - 1) * (level - 1) * 450;
+        levelBar.setValue(experience * 100 / xp);
+        levelBar.setString(Integer.toString(experience) + " XP");
     }
     public JTable getStatusBarTable()
     {

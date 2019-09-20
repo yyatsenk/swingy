@@ -112,6 +112,29 @@ public class UserInputMySQL implements UserInputHandeler
         }
         return null;
     }
+    public void updateDatabase(Hero hero)
+    {
+        try
+        {
+          query = "update char_table set level=?, experience=?, attack=?, defense=?, hit=? where name=?";
+          // create the mysql insert preparedstatement
+          PreparedStatement preparedStmt = connection.prepareStatement(query);
+          preparedStmt.setInt    (1, hero.getCharLevel());
+          preparedStmt.setInt    (2, hero.getCharExperience());
+          preparedStmt.setInt    (3, hero.getCharAttack());
+          preparedStmt.setInt    (4, hero.getCharDefense());
+          preparedStmt.setInt    (5, hero.getCharHit());
+          preparedStmt.setString (6, hero.getCharName());
+          preparedStmt.execute();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        finally {
+            destroyConnection();
+        } 
+    }
     public void    destroyConnection()
     {
         try

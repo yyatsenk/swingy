@@ -27,7 +27,7 @@ public abstract class SwingView
         villainList = new ArrayList<Hero> ();
         for (int i = 0; i < 5; i++)
         {
-            villainList.add(new Hero.HeroBuilder().setName("Devil").setLevel(4).setExperience(5000).setPosX(rand.nextInt(mapSize)).setPosY(rand.nextInt(mapSize)).build());
+            villainList.add(new Hero.HeroBuilder().setName("Devil").setLevel(4).setExperience(rand.nextInt(100)).setPosX(rand.nextInt(mapSize)).setPosY(rand.nextInt(mapSize)).build());
         }
         for (Hero h : villainList) {
             if (map[h.getPosY()][h.getPosX()] == 0)

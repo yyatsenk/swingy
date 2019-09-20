@@ -3,8 +3,8 @@ import java.util.*;
 import java.io.*;
 import java.awt.event.*;
 import java.awt.*;
-import javax.swing.*;//must be del
-import javax.swing.table.DefaultTableModel;//must be del
+// import javax.swing.*;//must be del
+// import javax.swing.table.DefaultTableModel;//must be del
 import Swingy.src.main.java.com.unit.view.*;
 import Swingy.src.main.java.com.unit.model.*;
 
@@ -12,13 +12,7 @@ public class MovementGui implements Movement
 {
     private void cross(final SwingView view, final Hero player, final int var, String direction)
     {
-        // Must be replaced to GuiView.java or GuiStatusBar as refreshBar()
-        GuiStatusBar statusBar = GuiStatusBar.getGuiStatusBar(null);
-        JTable table = statusBar.getStatusBarTable();
-        final DefaultTableModel model = (DefaultTableModel)table.getModel();
-        model.setValueAt("3000", 1, 3);
-        statusBar.getLevelBar().setValue(70);
-        //-----------------------------------------------------------------
+        final GuiStatusBar statusBar = GuiStatusBar.getGuiStatusBar(null);
         view.getMap()[player.getPosY()][player.getPosX()] = 0;
         if (direction.equals("UP"))
             player.setPosY(player.getPosY() - 1);
@@ -55,10 +49,13 @@ public class MovementGui implements Movement
                     {
                         view.getLogger().printMessage("YOU LOSE!\n");
                         view.resultMessage("LOSE");
+                        view.input.updateDatabase(player);
                     }
                     else
                     {
                         player.setExperience(player.getCharExperience() + villianExp);
+                        statusBar.updateProgressBar(player.getCharExperience(), player.getCharLevel());
+                        statusBar.updateBarTable(1, 3, Integer.toString(player.getCharExperience()));
                     }
                 }
                 if (e.getKeyCode() == KeyEvent.VK_R && e.getID() == KeyEvent.KEY_PRESSED) {
@@ -81,6 +78,7 @@ public class MovementGui implements Movement
         {
             System.out.println("You won!");
             view.resultMessage("WON");
+            view.input.updateDatabase(player);
         }
         else
         {
@@ -103,10 +101,11 @@ public class MovementGui implements Movement
         {
             System.out.println("You won!");
             view.resultMessage("WON");
+            view.input.updateDatabase(player);
         }
         else
         {
-            final int var = view.getMap()[player.getPosY() - 1][player.getPosX()];
+            final int var = view.getMap()[player.getPosY() + 1][player.getPosX()];
             if (view.getMap()[player.getPosY() + 1][player.getPosX()] != 0)
                 cross(view, player, var, "DOWN");
             else
@@ -125,6 +124,7 @@ public class MovementGui implements Movement
         {
             System.out.println("You won!");
             view.resultMessage("WON");
+            view.input.updateDatabase(player);
         }
         else
         {
@@ -147,6 +147,7 @@ public class MovementGui implements Movement
         {
             System.out.println("You won!");
             view.resultMessage("WON");
+            view.input.updateDatabase(player);
         }
         else
         {

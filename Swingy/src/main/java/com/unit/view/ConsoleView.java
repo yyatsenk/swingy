@@ -26,6 +26,11 @@ public class ConsoleView extends SwingView
     }
     public void initView()
     {
+        if (input.establishConnection() == 0)
+		{
+			System.out.println("Database connection failed\n");
+			return ;
+		}
     }
 
 
@@ -123,8 +128,6 @@ public class ConsoleView extends SwingView
             System.out.println("");
             j = -1;
         }
-
-
     }
     public void deinitView()
     {
