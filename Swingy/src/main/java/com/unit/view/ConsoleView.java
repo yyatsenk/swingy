@@ -47,6 +47,7 @@ public class ConsoleView extends SwingView
             j = -1;
             System.out.print("\n");
         }
+        System.out.print("\n");
     }
     public Hero  getUserInput()
     {

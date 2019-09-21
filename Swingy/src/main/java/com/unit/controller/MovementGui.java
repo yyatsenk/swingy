@@ -128,7 +128,7 @@ public class MovementGui implements Movement
         }
         else
         {
-            final int var = view.getMap()[player.getPosY() - 1][player.getPosX()];
+            final int var = view.getMap()[player.getPosY()][player.getPosX() - 1];
             if (view.getMap()[player.getPosY()][player.getPosX() - 1] != 0)
                 cross(view, player, var, "LEFT");
             else
@@ -151,7 +151,7 @@ public class MovementGui implements Movement
         }
         else
         {
-            final int var = view.getMap()[player.getPosY() - 1][player.getPosX()];
+            final int var = view.getMap()[player.getPosY()][player.getPosX() + 1];
             if (view.getMap()[player.getPosY()][player.getPosX() + 1] != 0)
                 cross(view, player, var, "RIGHT");
             else
