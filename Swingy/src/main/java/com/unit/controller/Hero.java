@@ -2,25 +2,28 @@ package Swingy.src.main.java.com.unit.controller;
 import java.util.*;
 import java.io.*;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.Max;
 import javax.validation.Valid;
 
-// TODO : set proper validation attributes
 public class Hero
 {
     private Movement move;
-    @NotNull
+    @Size(min = 2, max = 8, message = "Name must be from 2 to 8 chars")
     private String name;
+    @Size(min = 2, max = 8, message = "Hero Class must be from 2 to 8 chars")
     private String heroClass;
+    @Max(5)
+    @Min(1)
     private int level;
+    @Max(12200)
+    @Min(1)
     private int experience;
-    @NotNull
+    @Min(1)
     private int attack;
-    @NotNull
+    @Min(1)
     private int defense;
-    @NotNull
+    @Min(1)
     private int hit;
     private int posX = 0;
     private int posY = 0;

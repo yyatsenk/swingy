@@ -173,6 +173,7 @@ public class GuiView extends SwingView
                 });
             Validate.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent e){
+                try {
                     Hero hero = new Hero.HeroBuilder().setName(name.getText()).setHeroClass(cls.getText())
                     .setLevel(Integer.parseInt(level.getText())).setExperience(Integer.parseInt(experience.getText()))
                     .setAttack(Integer.parseInt(attack.getText())).setDefense(Integer.parseInt(defence.getText()))
@@ -180,9 +181,17 @@ public class GuiView extends SwingView
                     if (input.validate(hero) == 1)
                     {
                         input.addChar(hero);
+                        setHero(hero);
                         // game starts
                     }
-                    setHero(hero);
+                }
+                catch (NumberFormatException exp) {
+                    level.setText       ("Must be integer");
+                    experience.setText  ("Must be integer");
+                    attack.setText      ("Must be integer");
+                    defence.setText     ("Must be integer");
+                    hit.setText         ("Must be integer");
+                }
                 }
             });
             buttChoose.addActionListener(new ActionListener(){  
