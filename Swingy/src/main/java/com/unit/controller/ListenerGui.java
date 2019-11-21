@@ -18,19 +18,19 @@ public class ListenerGui extends Listener
             public boolean dispatchKeyEvent(KeyEvent e) {
               if (e.getKeyCode() == KeyEvent.VK_W && e.getID() == KeyEvent.KEY_PRESSED) {
                 player.getMovement().up(view, player);
-                view.logger.printMessage("Go up\n");
+                //view.logger.printMessage("Go up\n");
               }
               if (e.getKeyCode() == KeyEvent.VK_A && e.getID() == KeyEvent.KEY_PRESSED) {
                 player.getMovement().left(view, player);
-                view.logger.printMessage("Go left\n");
+                //view.logger.printMessage("Go left\n");
               }
               if (e.getKeyCode() == KeyEvent.VK_D && e.getID() == KeyEvent.KEY_PRESSED) {
                 player.getMovement().right(view, player);
-                view.logger.printMessage("Go right\n");
+                //view.logger.printMessage("Go right\n");
               }
               if (e.getKeyCode() == KeyEvent.VK_S && e.getID() == KeyEvent.KEY_PRESSED) {
                 player.getMovement().down(view, player);
-                view.logger.printMessage("Go down\n");
+                //view.logger.printMessage("Go down\n");
               }
               GuiView guiView = (GuiView)view;
               guiView.refresh();

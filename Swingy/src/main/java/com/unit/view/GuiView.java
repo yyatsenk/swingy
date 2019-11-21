@@ -92,21 +92,70 @@ public class GuiView extends SwingView
     {
         Validate = new JButton("Validate");
         Validate.setBounds(190,250,100, 45);
-        name = new JTextField("Enter name");
+        
+        name = new JTextField("Name");
         name.setBounds(130, 145, 100, 20);
-        cls = new JTextField("Enter class");
-        cls.setBounds(130, 170, 100, 20);
-        level = new JTextField("2");
-        level.setBounds(130, 195, 100, 20);
+        name.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                name.setText("");
+            }
+        });
 
-        experience = new JTextField("3");
+        cls = new JTextField("Class");
+        cls.setBounds(130, 170, 100, 20);
+        cls.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                cls.setText("");
+            }
+        });
+
+        level = new JTextField("Level");
+        level.setBounds(130, 195, 100, 20);
+        level.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                level.setText("");
+            }
+        });
+
+        experience = new JTextField("Experience");
         experience.setBounds(230, 145, 100, 20);
-        defence = new JTextField("4");
+        experience.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                experience.setText("");
+            }
+        });
+
+        defence = new JTextField("Defence");
         defence.setBounds(230, 170, 100, 20);
-        attack = new JTextField("5");
+        defence.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                defence.setText("");
+            }
+        });
+
+        attack = new JTextField("Attack");
         attack.setBounds(230, 195, 100, 20);
-        hit = new JTextField("6");
+        attack.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                attack.setText("");
+            }
+        });
+
+        hit = new JTextField("Hit");
         hit.setBounds(230, 220, 100, 20);
+        hit.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                hit.setText("");
+            }
+        });
+
         buttCreate.addActionListener(new ActionListener(){  
             public void actionPerformed(ActionEvent e){
                     buttChoose.setEnabled( false );
@@ -210,9 +259,9 @@ public class GuiView extends SwingView
         panel.setLayout(new GridLayout(map.length, map[0].length));
 
         try {
-            herotexture = ImageIO.read(new File("/home/yyatsenk/Downloads/1200px-Pac_Man.svg.png"));
-            background = ImageIO.read(new File("/home/yyatsenk/Downloads/solid-green-background.jpg"));
-            devil = ImageIO.read(new File("/home/yyatsenk/Downloads/1200px-Pac_Man.svg.png"));
+            herotexture = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/src/main/resources/images/1200px-Pac_Man.svg.png"));
+            background = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/src/main/resources/images/solid-green-background.jpg"));
+            devil = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/src/main/resources/images/1200px-Pac_Man.svg.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -236,7 +285,7 @@ public class GuiView extends SwingView
         refresh();
         gameArea.show();
         gameArea.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        logger.printMessage("God:Game starts!!!\n");
+        logger.printMessage("Game starts!!!\n");
     }
     public void resultMessage(String result)
     {

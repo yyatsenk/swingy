@@ -28,10 +28,6 @@ public class Hero
     {
         
     }
-    Hero(String name, int age, int power, int ammo)
-    {
-        ;
-    }
     public String getCharName()
     {
         return name;
@@ -87,6 +83,10 @@ public class Hero
     public void setExperience(int experience)
     {
         this.experience = experience;
+    }
+    public void setCharLevel(int level)
+    {
+        this.level = level;
     }
     private Hero(HeroBuilder builder) {
 		this.name = builder.name;

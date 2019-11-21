@@ -31,7 +31,6 @@ public class MovementGui implements Movement
                 villian = h;
                 break ;
             }
-            view.getLogger().printMessage(Integer.toString(h.getPosY()) + " " + Integer.toString(h.getPosX()) + "\n");
         }
         final int villianExp = villian.getCharExperience();
         view.getLogger().printMessage("\nName :" + villian.getCharName() + "\n");
@@ -53,6 +52,12 @@ public class MovementGui implements Movement
                     }
                     else
                     {
+                        int currentLevelScores = player.getCharLevel() * 1000 + (player.getCharLevel() - 1) *
+                        (player.getCharLevel() - 1) * 450;
+                        if (currentLevelScores < player.getCharExperience() + villianExp) {
+                            player.setCharLevel(player.getCharLevel() + 1);
+                            statusBar.updateBarTable(1, 2, Integer.toString(player.getCharLevel()));
+                        }
                         player.setExperience(player.getCharExperience() + villianExp);
                         statusBar.updateProgressBar(player.getCharExperience(), player.getCharLevel());
                         statusBar.updateBarTable(1, 3, Integer.toString(player.getCharExperience()));
