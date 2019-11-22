@@ -33,19 +33,21 @@ public class GuiStatusBar
                 if (row == 0)
                 {
                     //cellInTable.setFont(this.getFont().deriveFont(Font.BOLD));
-                    cellInTable.setFont(new Font("Serif", Font.BOLD, 12));
-                    cellInTable.setBackground(Color.WHITE);
+                    cellInTable.setFont(new Font("Serif", Font.BOLD, 16));
+                    cellInTable.setForeground(Color.white);
                 }
                 else if (row == 1)
                 {
-                    cellInTable.setFont(new Font("Serif", Font.BOLD, 14));
-                    cellInTable.setBackground(new Color(174,226,237));
+                    cellInTable.setFont(new Font("Serif", Font.PLAIN, 14));
+                    cellInTable.setForeground(Color.white);
                 }
                 //  add custom rendering here
         
                 return cellInTable;
             }
         };
+        statusBarTable.setBackground(new Color(0x2F, 0x35, 0x38));
+        statusBarTable.setRowHeight(20);
         statusBarTable.setBounds(0, 370, 500, 50);
         statusBarTable.setShowGrid(false);
 

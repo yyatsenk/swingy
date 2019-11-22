@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.*;
 import java.io.*;
 import javax.swing.*;
+import javax.swing.table.*;
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -15,8 +16,8 @@ public class GuiView extends SwingView
 {
     public Hero hero;
     private JFrame f;
-    public JFrame gameArea;//!!!!!
-    public JPanel panel;
+    private JFrame gameArea;
+    private JPanel panel;
     private JButton buttCreate;
     private JButton buttChoose;
     private JButton Validate;
@@ -60,21 +61,27 @@ public class GuiView extends SwingView
 		}
         f = new JFrame("Swingy");
 
-
         lbl = new JLabel("You need the warrior for game!"); 
         lbl.setBounds(110,5, 350,30);
+        lbl.setForeground(Color.white);
 
         buttCreate = new JButton("Create");
-        buttCreate.setBounds(130,100,100, 40); 
-        
+        buttCreate.setBounds(130,100,100, 40);
+        buttCreate.setBackground(new Color(22, 22, 22));
+        buttCreate.setForeground(Color.white);
+        buttCreate.setFocusPainted(false);
+
         buttChoose = new JButton("Choose");
         buttChoose.setBounds(230,100,100, 40);
+        buttChoose.setBackground(new Color(22, 22, 22));
+        buttChoose.setForeground(Color.white);
+        buttChoose.setFocusPainted(false);
         
               
         f.add(buttCreate);//adding button in JFrame 
         f.add(buttChoose);
         f.add(lbl);
-
+        f.getContentPane().setBackground(new Color(0x2F, 0x35, 0x38));
     	f.setSize(500,400);
     	f.setLayout(null);  
         f.setVisible(true);
@@ -92,6 +99,9 @@ public class GuiView extends SwingView
     {
         Validate = new JButton("Validate");
         Validate.setBounds(190,250,100, 45);
+        Validate.setBackground(new Color(22, 22, 22));
+        Validate.setForeground(Color.white);
+        Validate.setFocusPainted(false);
         
         name = new JTextField("Name");
         name.setBounds(130, 145, 100, 20);
@@ -200,9 +210,14 @@ public class GuiView extends SwingView
                         String[][] data = input.getResQuery();
                   
                         final JTable j = new JTable(data, columnNames); 
-                        j.setBounds(0, 200, 500, 200); 
-    
-                        JScrollPane sp = new JScrollPane(j); 
+                        j.setBounds(0, 200, 500, 200);
+                        j.setBackground(new Color(0x78, 0xBB, 0xD6));
+                        j.getTableHeader().setBackground(new Color(0x78, 0xBB, 0xD6));
+                        j.getTableHeader().setFont(new Font("Serif", Font.BOLD, 12));
+
+                        JScrollPane sp = new JScrollPane(j);
+                        sp.getViewport().setBackground(new Color(0x2F, 0x35, 0x38));
+                        sp.setBorder(BorderFactory.createEmptyBorder());
                         sp.setBounds(0, 200, 500, 200); 
                         f.add(sp);
                         f.show();
@@ -261,6 +276,7 @@ public class GuiView extends SwingView
         if (f.isVisible())
             f.setVisible(false);
         gameArea = new JFrame("Swingy");
+        gameArea.getContentPane().setBackground(new Color(0x2F, 0x35, 0x38));
         panel = new JPanel();
         ((LoggerGui)logger).getTextArea().setEditable(false);
         JScrollPane scrolll = new JScrollPane(((LoggerGui)logger).getTextArea());
