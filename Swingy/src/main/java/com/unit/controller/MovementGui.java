@@ -46,15 +46,16 @@ public class MovementGui implements Movement
                     view.getMap()[player.getPosY()][player.getPosX()] = 1;
                     if (villianExp > player.getCharExperience())
                     {
-                        view.getLogger().printMessage("YOU LOSE!\n");
                         view.resultMessage("LOSE");
                         view.input.updateDatabase(player);
                     }
                     else
                     {
-                        int currentLevelScores = player.getCharLevel() * 1000 + (player.getCharLevel() - 1) *
-                        (player.getCharLevel() - 1) * 450;
-                        if (currentLevelScores < player.getCharExperience() + villianExp) {
+                        int nextLevelScores = (player.getCharLevel() + 1) * 1000 + (player.getCharLevel()) *
+                        (player.getCharLevel()) * 450;
+                        if (player.getCharLevel() == 0)
+                            nextLevelScores = 1000;
+                        if (nextLevelScores < player.getCharExperience() + villianExp) {
                             player.setCharLevel(player.getCharLevel() + 1);
                             statusBar.updateBarTable(1, 2, Integer.toString(player.getCharLevel()));
                         }
@@ -77,11 +78,10 @@ public class MovementGui implements Movement
         KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(keyEventDispatcherPrevious);
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(keyEventDispatcher);
     }
-    public int [][] up(final SwingView view, final Hero player)
+    public void up(final SwingView view, final Hero player)
     {
         if (player.getPosY() - 1 < 0)
         {
-            System.out.println("You won!");
             view.resultMessage("WON");
             view.input.updateDatabase(player);
         }
@@ -98,13 +98,11 @@ public class MovementGui implements Movement
                 view.getMap()[player.getPosY()][player.getPosX()] = 1;
             }
         }
-        return view.getMap();
     }
-    public int [][] down(SwingView view, Hero player)
+    public void down(SwingView view, Hero player)
     {
         if (player.getPosY() + 1 > view.getMap().length - 1)
         {
-            System.out.println("You won!");
             view.resultMessage("WON");
             view.input.updateDatabase(player);
         }
@@ -121,13 +119,11 @@ public class MovementGui implements Movement
                 view.getMap()[player.getPosY()][player.getPosX()] = 1;
             }
         }
-        return view.getMap();
     }
-    public int [][] left(SwingView view, Hero player)
+    public void left(SwingView view, Hero player)
     {
         if (player.getPosX() - 1 < 0)
         {
-            System.out.println("You won!");
             view.resultMessage("WON");
             view.input.updateDatabase(player);
         }
@@ -144,13 +140,11 @@ public class MovementGui implements Movement
                 view.getMap()[player.getPosY()][player.getPosX()] = 1;
             }
         }
-        return view.getMap();
     }
-    public int [][] right(SwingView view, Hero player)
+    public void right(SwingView view, Hero player)
     {
         if (player.getPosX() + 1 > view.getMap()[0].length -  1)
         {
-            System.out.println("You won!");
             view.resultMessage("WON");
             view.input.updateDatabase(player);
         }
@@ -167,6 +161,5 @@ public class MovementGui implements Movement
                 view.getMap()[player.getPosY()][player.getPosX()] = 1;
             }
         }
-        return view.getMap();
     }
 }

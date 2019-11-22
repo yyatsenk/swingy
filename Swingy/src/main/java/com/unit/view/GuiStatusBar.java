@@ -70,8 +70,17 @@ public class GuiStatusBar
     }
     public void updateProgressBar(int experience, int level)
     {
-        int xp = level * 1000 + (level - 1) * (level - 1) * 450;
-        levelBar.setValue(experience * 100 / xp);
+        int xp, xp2, delta;
+        xp = level * 1000 + (level - 1) * (level - 1) * 450;
+        xp2 = (level + 1) * 1000 + (level) * (level) * 450;
+        if (level == 0) {
+            delta = 1000;
+            xp = 0;
+        }
+        else
+            delta = xp2 - xp;
+        int tmp = xp - experience;
+        levelBar.setValue((experience - xp) * 100 / delta);
         levelBar.setString(Integer.toString(experience) + " XP");
     }
     public JTable getStatusBarTable()

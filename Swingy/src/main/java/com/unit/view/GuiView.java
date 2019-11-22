@@ -317,13 +317,6 @@ public class GuiView extends SwingView
     public void resultMessage(String result)
     {
         gameArea.setEnabled(false);
-        JFrame res = new JFrame(result);
-        res.setSize(200, 200);
-        JLabel label = new JLabel("YOU " + result + "!"); 
-        label.setBounds(70, 45, 100, 20);
-        res.add(label);
-        res.setLayout(null);
-        res.setVisible(true);
-        res.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        logger.printMessage("YOU " + result + "!\n");
     }
 }

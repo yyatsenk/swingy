@@ -14,7 +14,7 @@ public class Hero
     @Size(min = 2, max = 8, message = "Hero Class must be from 2 to 8 chars")
     private String heroClass;
     @Max(5)
-    @Min(1)
+    @Min(0)
     private int level;
     @Max(12200)
     @Min(1)
