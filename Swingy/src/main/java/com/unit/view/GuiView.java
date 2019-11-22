@@ -285,18 +285,19 @@ public class GuiView extends SwingView
         panel.setLayout(new GridLayout(map.length, map[0].length));
 
         try {
-            herotexture = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/src/main/resources/images/1200px-Pac_Man.svg.png"));
-            background = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/src/main/resources/images/solid-green-background.jpg"));
-            devil = ImageIO.read(new File("/home/yyatsenko/unit/swingy/Swingy/src/main/resources/images/1200px-Pac_Man.svg.png"));
+            herotexture = ImageIO.read(GuiView.class.getResourceAsStream("/images/pacman.png"));
+            background = ImageIO.read(GuiView.class.getResourceAsStream("/images/solid-green-background.jpg"));
+            devil = ImageIO.read(GuiView.class.getResourceAsStream("/images/dragon.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        herotextureSized = herotexture.getScaledInstance(width / map.length, height / map.length, Image.SCALE_DEFAULT);
-        backgroundSized = background.getScaledInstance(width / map.length, height / map.length, Image.SCALE_DEFAULT);
-        devilSized = devil.getScaledInstance(width / map.length, height / map.length, Image.SCALE_DEFAULT);
+        herotextureSized = herotexture.getScaledInstance(width / map.length / 2, height / map.length / 2, Image.SCALE_DEFAULT);
+        backgroundSized = background.getScaledInstance(width / map.length / 2, height / map.length / 2, Image.SCALE_DEFAULT);
+        devilSized = devil.getScaledInstance(width / map.length / 2, height / map.length / 2, Image.SCALE_DEFAULT);
 
         
         GuiStatusBar statusBar = GuiStatusBar.getGuiStatusBar(hero);
+        statusBar.getLevelBar().setForeground(new Color(0x78, 0xBB, 0xD6));
         gameArea.setSize(width, height);
         panel.setBounds(0,0,250,250);
         panel.setBackground(Color.gray);

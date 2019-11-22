@@ -48,7 +48,7 @@ public class GuiStatusBar
         };
         statusBarTable.setBackground(new Color(0x2F, 0x35, 0x38));
         statusBarTable.setRowHeight(20);
-        statusBarTable.setBounds(0, 370, 500, 50);
+        statusBarTable.setBounds(10, 370, 500, 50);
         statusBarTable.setShowGrid(false);
 
         levelBar = new JProgressBar(); 
