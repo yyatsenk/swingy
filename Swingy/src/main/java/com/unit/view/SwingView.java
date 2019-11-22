@@ -23,10 +23,15 @@ public abstract class SwingView
     public void spreadWarriors(int mapSize)
     {
         Random rand =  new Random();
+        int level = (mapSize - 4) / 5;
+        if (((mapSize - 5) % 5) == 0)
+            level = (mapSize - 5) / 5;
+        level++;
+        int exp = level * 1000 + (level - 1) * (level - 1) * 450;
         villainList = new ArrayList<Hero> ();
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5 * level; i++)
         {
-            villainList.add(new Hero.HeroBuilder().setName("Devil").setLevel(4).setExperience(rand.nextInt(100)).setPosX(rand.nextInt(mapSize)).setPosY(rand.nextInt(mapSize)).build());
+            villainList.add(new Hero.HeroBuilder().setName("Devil").setLevel(4).setExperience(rand.nextInt(exp * 2)).setPosX(rand.nextInt(mapSize)).setPosY(rand.nextInt(mapSize)).build());
         }
         for (Hero h : villainList) {
             if (map[h.getPosY()][h.getPosX()] == 0)

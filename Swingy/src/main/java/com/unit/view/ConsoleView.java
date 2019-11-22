@@ -136,7 +136,7 @@ public class ConsoleView extends SwingView
     }
     public void startGame(int width, int height, Hero hero)
     {
-
+        spreadWarriors(map.length - 1);
     }
     public void resultMessage(String result)
     {
