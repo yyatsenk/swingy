@@ -62,23 +62,24 @@ public class GuiView extends SwingView
         f = new JFrame("Swingy");
 
         lbl = new JLabel("You need the warrior for game!"); 
-        lbl.setBounds(110,5, 350,30);
+        lbl.setBounds(0, 5, 500, 30);
         lbl.setForeground(Color.white);
+        lbl.setHorizontalAlignment(JLabel.CENTER);
 
         buttCreate = new JButton("Create");
-        buttCreate.setBounds(130,100,100, 40);
+        buttCreate.setBounds(145,100,100, 40);
         buttCreate.setBackground(new Color(22, 22, 22));
         buttCreate.setForeground(Color.white);
         buttCreate.setFocusPainted(false);
 
         buttChoose = new JButton("Choose");
-        buttChoose.setBounds(230,100,100, 40);
+        buttChoose.setBounds(245,100,100, 40);
         buttChoose.setBackground(new Color(22, 22, 22));
         buttChoose.setForeground(Color.white);
         buttChoose.setFocusPainted(false);
         
               
-        f.add(buttCreate);//adding button in JFrame 
+        f.add(buttCreate);
         f.add(buttChoose);
         f.add(lbl);
         f.getContentPane().setBackground(new Color(0x2F, 0x35, 0x38));
@@ -98,13 +99,13 @@ public class GuiView extends SwingView
     public Hero  getUserInput()
     {
         Validate = new JButton("Validate");
-        Validate.setBounds(190,250,100, 45);
+        Validate.setBounds(205,250,100, 45);
         Validate.setBackground(new Color(22, 22, 22));
         Validate.setForeground(Color.white);
         Validate.setFocusPainted(false);
         
         name = new JTextField("Name");
-        name.setBounds(130, 145, 100, 20);
+        name.setBounds(145, 145, 100, 20);
         name.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -113,7 +114,7 @@ public class GuiView extends SwingView
         });
 
         cls = new JTextField("Class");
-        cls.setBounds(130, 170, 100, 20);
+        cls.setBounds(145, 170, 100, 20);
         cls.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -122,7 +123,7 @@ public class GuiView extends SwingView
         });
 
         level = new JTextField("Level");
-        level.setBounds(130, 195, 100, 20);
+        level.setBounds(145, 195, 100, 20);
         level.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -131,7 +132,7 @@ public class GuiView extends SwingView
         });
 
         experience = new JTextField("Experience");
-        experience.setBounds(230, 145, 100, 20);
+        experience.setBounds(245, 145, 100, 20);
         experience.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -140,7 +141,7 @@ public class GuiView extends SwingView
         });
 
         defence = new JTextField("Defence");
-        defence.setBounds(230, 170, 100, 20);
+        defence.setBounds(245, 170, 100, 20);
         defence.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -149,7 +150,7 @@ public class GuiView extends SwingView
         });
 
         attack = new JTextField("Attack");
-        attack.setBounds(230, 195, 100, 20);
+        attack.setBounds(245, 195, 100, 20);
         attack.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
@@ -158,7 +159,7 @@ public class GuiView extends SwingView
         });
 
         hit = new JTextField("Hit");
-        hit.setBounds(230, 220, 100, 20);
+        hit.setBounds(245, 220, 100, 20);
         hit.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
